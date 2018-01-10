@@ -1,0 +1,330 @@
+@import "variables.less";
+@fl:right;
+@fr:left;
+
+.text-left{ text-align:right!important;}
+.text-right{ text-align:left!important;}
+.pull-left, .navbar-left, .navbar-top-links > li{ float:@fl!important;}
+.pull-right, .navbar-right{ float:@fr!important;}
+.m-r-5 {
+  margin-left:5px !important;
+}
+.m-r-10 {
+  margin-left:10px !important;
+}
+.m-r-15 {
+  margin-left:15px !important;
+}
+.m-r-20 {
+  margin-left:20px !important;
+}
+.m-r-30 {
+  margin-left:30px !important;
+}
+.m-r-40 {
+  margin-left:40px !important;
+}
+.m-l-5 {
+  margin-right:5px !important;
+}
+.m-l-10 {
+  margin-right:10px !important;
+}
+.m-l-15 {
+  margin-right:15px !important;
+}
+.m-l-20 {
+  margin-right:20px !important;
+}
+.m-l-30 {
+  margin-right:30px !important;
+}
+.m-l-40 {
+  margin-right:40px !important;
+}
+
+/*Header*/
+.nav, .navbar-top-links{ padding-right:0px;}
+.bg-title .breadcrumb{ float:@fr;}
+.dropdown-tasks li a div p{ text-align:right;}
+.message-center .user-img{ float:@fl; margin:0 0px 15px 10px}
+.message-center .mail-contnet{text-align:right;}
+.drop-title{ text-align:center;}
+.top-left-part{float:@fl;}
+.profile-pic img{margin-right:0px; margin-left: 10px;}
+
+/*Navigation*/
+#side-menu > li > a{padding:15px 15px 15px 30px;}
+.sidebar #side-menu .user-pro > a{padding:17px 15px 16px 30px!important}
+.sidebar #side-menu .user-pro .img-circle{margin-right:0px; margin-left:10px;}
+.sidebar .nav-second-level li a{padding-left:0px; padding-right:39px;}
+.sidebar #side-menu .user-pro .arrow{left:20px ; right:inherit;}
+.sidebar .arrow{ left: 15px; right:inherit;}
+.nav-small-cap{ margin:20px -15px 0 0px}
+.dropdown-menu li a i{ display:inline-block;}
+.sidebar #side-menu .user-pro .nav-second-level li i{display:inline-block;}
+/*----Widgets----*/
+
+/* .col-in-row */
+.row-in-br{ border-right:0px; border-left:1px solid @border;}
+
+/*Comment section*/
+.comment-center .mail-contnet{ padding-left:0px; padding-right:15px;}
+.mail-contnet a.action{ display:inline-block; margin-right:10px; margin-left:0px;}
+
+/*Chat*/
+.chat-list .chat-body{ text-align:left;}
+.chat-main-box .chat-right-aside{
+    margin-left: 0px;
+    margin-right: 250px;
+}
+.chat-main-box .chat-left-aside{
+    border-left: 1px solid @border;
+}
+/*slider*/
+.twi-user img{margin-right:0px; margin-left:20px;}
+
+/*Task list*/
+.list-task li div label span:first-child{ float:@fl; margin-left:5px;}
+
+/*Checkbox*/
+.checkbox {
+  padding-left: 20px;
+  label {
+    display: inline-block;
+    padding-left: 5px;
+    position: relative;
+    &::before {
+      right: 10px;
+      margin-right: -10px;
+    }
+    &::after {
+      right: 10px;
+      margin-right: -10px;
+      padding-right: 3px;
+    }
+  }
+ }
+.radio {
+  
+  label {
+   
+    &::before {
+      right: 0px;
+      margin-right: -1px;
+    }
+    &::after {
+      right: 5px;
+      margin-right: -1px;
+     
+    }
+  }
+ }
+/*Feeds*/
+.feeds li span{ float:@fr;}
+.feeds li > div{ margin-right:0px; margin-left:5px;}
+
+/*Activity*/
+.steamline {
+    border-left: 0px; 
+    border-right: 1px solid rgba(120, 130, 140, 0.13);
+    margin-left: 0px;
+    margin-right:20px;
+}
+.steamline .sl-left{margin-left:15px; margin-right:-20px; float:@fl;}
+
+/*Panels*/
+.panel .panel-action{ float:@fr;}
+.panel .panel-action a{ display:inline-block;}
+.panel .panel-heading a i{margin-left:0px; margin-right:8px;}
+
+/*Buttons*/
+.btn-label{ margin:-6px -14px -6px 12px;}
+
+/*tabs*/
+.vtabs .tabs-vertical{ border-right:0px; border-left:1px solid @border;}
+.customvtab .tabs-vertical li.active a, .customvtab .tabs-vertical li.active a:hover, .customvtab .tabs-vertical li.active a:focus{ border-right:0px; border-left:2px solid @themecolor; margin-left:-1px; margin-right:0px;}
+
+/*Carousel*/
+.owl-carousel.owl-loaded{ direction:ltr;}
+.carousel-control.left{left:0px; right:auto;}
+
+/*Dropdown menu*/
+.navbar-right .dropdown-menu, .navbar-top-links .dropdown-user, .dropdown-menu-right { right: auto;  left: 0px;}
+
+/*popover*/
+.demo-tooltip .tooltip, .demo-popover .popover{ margin-right:0px; margin-left:25px;}
+
+/*Color Picker*/
+.asColorPicker-trigger{right:inherit; left:-35px;}
+.datepicker-dropdown { right: auto}
+
+/*wizard*/
+.wizard-steps > li span{ margin-left:8px;}
+
+/*Pricing*/
+.pricing-body h2 span{margin-right:-15px;}
+
+/*Side panel*/
+.shw-rside{left:0px; right:inherit;}
+.chatonline img{ float:@fl; margin-left:10px; margin-right:0px;}
+.right-sidebar .rpanel-title span{float:@fr;}
+
+/*----bootstrap----*/
+h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small, .h1 .small, h2 .small, .h2 .small, h3 .small, .h3 .small{display:inline-block;}
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]{margin-left:0px; margin-right:-20px;}
+.bootstrap-select.btn-group .dropdown-toggle .filter-option{ text-align:right;}
+.bootstrap-select>.dropdown-toggle{padding-left:25px; padding-right:15px;}
+.bootstrap-select.btn-group .dropdown-toggle .caret{left:12px; right:auto}
+.popover {
+    direction: rtl;
+    left:0;
+    right:auto; 
+
+}
+
+
+/*Ipad*/
+@media(min-width:768px) {
+  
+  #page-wrapper {
+        position: inherit;
+        margin: 0px 220px 0px 0px;
+    }
+    /*If body has fix sidebar class*/
+    .fix-sidebar{
+        .navbar-left{
+          margin-right:220px;
+          }
+          
+    }
+   .footer{
+    right:220px;
+    left:0;
+   }
+   .content-wrapper .sidebar #side-menu > li > a{padding:15px 20px 15px 20px}
+   .navbar-right .dropdown-menu{ left: 0;  right: auto;}
+   /*If body has content-wrapper*/
+    .content-wrapper { 
+        #page-wrapper {
+            margin-right:60px;
+            margin-left:0px;
+        }
+        .navbar-left{
+              margin-right:0px;
+          }
+        .footer{right:60px; left:0px;}
+          
+        .sidebar{
+            width:60px;
+           
+           .hide-menu{
+               display:none;
+               width:180px;
+               right:60px;
+           }
+           
+           .nav-second-level{
+                position: absolute;
+                right: 60px;
+                background: @extralight;
+                width: 240px;
+                opacity:1;
+                padding-bottom:20px;
+                display:none;
+             > li > a{
+                  padding-right:30px;
+              }  
+            }   
+        }
+        
+    }
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-right: auto;
+    }
+.mail_listing{border-left:1px solid rgba(120, 130, 140, 0.13); padding-right:20px;}
+.inbox-panel{ padding-left:20px; }
+
+.top-minus{
+  margin-top:-62px;
+  float:@fr;
+}
+.fix-sidebar.content-wrapper, .content-wrapper.fix-sidebar{
+  .navbar-left{
+              margin-right:60px!important;
+          }
+         
+}
+
+}
+
+@media (max-width:1024px) {
+ .b-r-none{ border-left:0px;}
+ 
+}
+/*Phone*/
+@media(max-width:767px) {
+    .navbar-top-links {
+        display:inline-block;
+    .profile-pic img{
+        margin-left:0px;
+        }
+    }
+    .top-left-part{ width:60px;}
+    .navbar-top-links li:last-child{ margin-left:0px;}
+    .navbar-top-links .dropdown-messages, .navbar-top-links .dropdown-tasks, .navbar-top-links .dropdown-alerts{
+        width:260px;
+
+    }
+    .row-in-br{ border-right:0px; border-bottom:1px solid @border;}
+    .bg-title{
+      .breadcrumb{
+        float:@fl;
+        margin-top:0px;
+        margin-bottom:10px;
+      }
+    }
+    /*Timeline*/
+     ul.timeline:before {
+        right: 40px;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        width: calc(100% - 90px);
+        width: -moz-calc(100% - 90px);
+        width: -webkit-calc(100% - 90px);
+    }
+
+    ul.timeline > li > .timeline-badge {
+        top: 16px;
+        right: 15px;
+        margin-right: 0;
+    }
+
+    ul.timeline > li > .timeline-panel {
+        float: @fr;
+    }
+
+    ul.timeline > li > .timeline-panel:before {
+        right: auto;
+        right: -15px;
+        border-left-width: 15px;
+        border-right-width: 0;
+    }
+
+    ul.timeline > li > .timeline-panel:after {
+        right: auto;
+        right: -14px;
+        border-left-width: 14px;
+        border-right-width: 0;
+    }
+
+   .wizard-steps > li{
+      display:block;
+   }
+   .dropdown .mailbox, .dropdown .dropdown-tasks {
+      right:-134px;
+    }    
+}
