@@ -66,7 +66,9 @@ class InfographicController extends Controller
                 'title' =>$request->title,
                 'description'=>$request->description,
                 'user_id'=>Auth::user()->id,
-                'slug'=>$slug
+                'slug'=>$slug,
+                'cat_id'=>$request->cat_id,
+
             ]);
 
         }
@@ -93,7 +95,8 @@ class InfographicController extends Controller
         $this->validate($request,[
             'title' => 'required|string|max:255|unique:galleries',
             'description' => 'required|string',
-            'img' => 'required|image|mimes:jpeg,jpg,png,gif|max:100000'
+            'img' => 'required|image|mimes:jpeg,jpg,png,gif|max:100000',
+            'cat_id'=>'required',
         ]);
         $this->register($request);
         Alert::success('عظيم','تم اضافة انفوجراف جديد بنجاح');
@@ -136,11 +139,12 @@ class InfographicController extends Controller
             $slug=make_slug($request->title,'-');
 
             $graph->update([
-                'img' =>$img,
                 'title' =>$request->title,
                 'description'=>$request->description,
                 'user_id'=>Auth::user()->id,
-                'slug'=>$slug
+                'slug'=>$slug,
+                'cat_id'=>$request->cat_id,
+
             ]);
         }
         catch(ValidationException $e)
@@ -172,6 +176,7 @@ class InfographicController extends Controller
             'title' => 'required|string|max:255|unique:galleries,title,'. $graph->id,
             'description' => 'required|string',
             'img' => 'sometimes|image|mimes:jpeg,jpg,png,gif|max:100000',
+            'cat_id'=>'required',
         ]);
         //update Graph Record
         $this->UpdateRecords($graph,$request);

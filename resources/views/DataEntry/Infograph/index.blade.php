@@ -34,7 +34,8 @@
               <tr>
                 <th>#</th>
                 <th>عنوان الانفوجراف</th>
-                <th>الكاتب</th>
+                  <th>القسم</th>
+                  <th>الكاتب</th>
                   <th>تاريخ الإضافة</th>
                   <th>العمليات</th>
               </tr>
@@ -43,6 +44,7 @@
               <tr>
                   <th>#</th>
                   <th>عنوان الانفوجراف</th>
+                  <th>القسم</th>
                   <th>الكاتب</th>
                   <th>تاريخ الإضافة</th>
                   <th>العمليات</th>
@@ -53,6 +55,7 @@
               <tr>
                 <td>{{$graph->id}}</td>
                 <td>{{$graph->title}}</td>
+                  <td> <span class="label label-primary">{{$graph->category->title}}</span></td>
                   <td>
                   <span class="label label-info">{{$graph->writer->name}}</span>
                   </td>

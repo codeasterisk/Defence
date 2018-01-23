@@ -34,7 +34,8 @@
               <tr>
                 <th>#</th>
                 <th>عنوان الفيديو</th>
-                <th>الكاتب</th>
+                  <th>القسم</th>
+                  <th>الكاتب</th>
                   <th>تاريخ الإضافة</th>
                   <th>العمليات</th>
               </tr>
@@ -42,7 +43,8 @@
               <tfoot>
               <tr>
                   <th>#</th>
-                  <th>عنوان الفيديو</th>
+                  <th>عنوان الفيديو
+                  <th>القسم</th>
                   <th>الكاتب</th>
                   <th>تاريخ الإضافة</th>
                   <th>العمليات</th>
@@ -53,6 +55,9 @@
               <tr>
                 <td>{{$video->id}}</td>
                 <td>{{$video->title}}</td>
+                  <td>
+                      <span class="label label-primary">{{$video->category->title}}</span>
+                  </td>
                   <td>
                   <span class="label label-info">{{$video->writer->name}}</span>
                   </td>

@@ -58,7 +58,8 @@ class VideoController extends Controller
                 'title' =>$request->title,
                 'description'=>$request->description,
                 'user_id'=>Auth::user()->id,
-                'slug'=>$slug
+                'slug'=>$slug,
+                'cat_id'=>$request->cat_id,
             ]);
 
         }
@@ -86,6 +87,7 @@ class VideoController extends Controller
             'url' => 'required|string|max:255|url',
             'title' => 'required|string|max:255|unique:videos',
             'description' => 'required|string',
+            'cat_id'=>'required',
         ]);
         $this->register($request);
         Alert::success('عظيم','تم اضافة فيديو جديد بنجاح');
@@ -120,7 +122,9 @@ class VideoController extends Controller
                 'url' =>$request->url,
                 'title' =>$request->title,
                 'description'=>$request->description,
-                'slug'=>$slug
+                'slug'=>$slug,
+                'cat_id'=>$request->cat_id,
+
             ]);
         }
         catch(ValidationException $e)
@@ -152,6 +156,8 @@ class VideoController extends Controller
             'url' => 'required|string|max:255',
             'title' => 'required|string|max:255|unique:videos,title,' . $video->id,
             'description' => 'required|string',
+            'cat_id'=>'required',
+
         ]);
         //update Video Record
         $this->UpdateRecords($video,$request);

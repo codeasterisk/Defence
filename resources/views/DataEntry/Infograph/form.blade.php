@@ -9,9 +9,19 @@
 </div>
 @endif
 
-<div class="form-group col-md-12 pull-left">
+
+<div class="form-group col-md-6 pull-left">
     <label for="exampleInputEmail1">عنوان الانفوجراف</label>
     {!! Form::text("title",null,['class'=>'form-control'])!!}
+</div>
+
+<div class="form-group col-md-6 pull-left">
+    <label for="exampleInputPassword1">قسم التخصص</label>
+    <select class="selectpicker cat col-md-12" name="cat_id" data-style="btn-info btn-outline" data-placeholder="اختر اقسام التخصص">
+        @foreach(\App\Category::where('type','infographic')->get() as $cat)
+            <option value="{{$cat->id}}">{{$cat->title}}</option>
+        @endforeach
+    </select>
 </div>
 
 <div class="form-group col-md-12 pull-left">
