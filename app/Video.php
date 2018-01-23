@@ -13,7 +13,7 @@ class Video extends Model
      * @var array
      */
     protected $fillable = [
-        'url', 'title', 'description','user_id'
+        'url', 'title', 'description','user_id','slug','cat_id'
     ];
 
     /**
@@ -23,5 +23,15 @@ class Video extends Model
     public function writer()
     {
         return $this->belongsTo(User::class,'user_id');
+    }
+
+
+    /**
+     * Get Video Category
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function Category()
+    {
+        return $this->belongsTo(Category::class,'cat_id');
     }
 }

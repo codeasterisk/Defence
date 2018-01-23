@@ -60,7 +60,11 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'sweetalert' => \UxWeb\SweetAlert\ConvertMessagesIntoSweetAlert::class,
         'Admin' =>\App\Http\Middleware\AdminMiddleware::class,
+        'Videos' =>\App\Http\Middleware\Videos::class,
+        'Infograph' =>\App\Http\Middleware\Infograph::class,
+        'EntryMiddleware' =>\App\Http\Middleware\EntryMiddleware::class,
         'optimizeImages' => \Spatie\LaravelImageOptimizer\Middlewares\OptimizeImages::class,
+
 
     ];
 }

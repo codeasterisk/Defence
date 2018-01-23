@@ -12,7 +12,7 @@ class Gallery extends Model
      * @var array
      */
     protected $fillable = [
-        'img', 'title', 'description','user_id',
+        'img', 'title', 'description','user_id','slug','cat_id'
     ];
     /**
      * Get Gallery Writer
@@ -21,5 +21,14 @@ class Gallery extends Model
     public function writer()
     {
         return $this->belongsTo(User::class,'user_id');
+    }
+
+    /**
+     * Get Gallery Category
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function Category()
+    {
+        return $this->belongsTo(Category::class,'cat_id');
     }
 }

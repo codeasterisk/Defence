@@ -12,7 +12,7 @@ class News extends Model
      * @var array
      */
     protected $fillable = [
-        'prefix', 'cat_id', 'user_id','title','description','img','subject','slug','status','writer'
+        'prefix', 'cat_id', 'user_id','title','description','img','subject','slug','status','writer','clicks'
     ];
 
     /**
@@ -33,13 +33,6 @@ class News extends Model
         return $this->belongsTo(Category::class,'cat_id');
     }
 
-    /**
-     * Get News Clicks
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function clicks()
-    {
-        return $this->HasMany(News::class);
-    }
+
 
 }

@@ -12,7 +12,7 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'slug'
+        'title', 'slug','type'
     ];
 
     /**
@@ -21,9 +21,35 @@ class Category extends Model
      */
     public function news()
     {
-        return $this->hasMany(News::class);
+        return $this->hasMany(News::class,'cat_id');
     }
 
 
+    /**
+     * Get Category Videos
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function videos()
+    {
+        return $this->hasMany(Video::class,'cat_id');
+    }
+
+    /**
+     * Get Category infographics
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function infographics()
+    {
+        return $this->hasMany(Gallery::class,'cat_id');
+    }
+
+    /**
+     *Show  Category Users
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'userepartements', 'cat_id', 'user_id');
+    }
 
 }

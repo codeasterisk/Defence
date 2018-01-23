@@ -8,12 +8,21 @@
   </ul>
 </div>
 @endif
-
-<div class="form-group">
-    <label for="exampleInputEmail1">Category Title</label>
-    {!! Form::text("name",null,['class'=>'form-control'])!!}
+<row>
+<div class="form-group col-md-6 pull-left">
+    <label for="exampleInputEmail1">اسم القسم</label>
+    {!! Form::text("title",null,['class'=>'form-control'])!!}
 </div>
 
-<button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-<button type="reset" class="btn btn-inverse waves-effect waves-light">Reset</button>
+
+<div class="form-group col-md-6 pull-left">
+    <label for="exampleInputPassword1">نوع القسم</label>
+    {!! Form::select("type",cat_type(),null,['class'=>'selectpicker col-md-12','data-style'=>'btn-info btn-outline','width'=>'100'])!!}
+</div>
+</row>
+
+
+<div class="text-center col-md-12">
+    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 ">حفظ</button>
+    <button type="reset" class="btn btn-inverse waves-effect waves-light">إعادة</button>
 </div>

@@ -17,32 +17,39 @@
 </li>
 
 <li> <a href="javascript:void(0)" class="waves-effect"><i class="fa fa-folder"></i>
-                <span class="hide-menu">Categories<span class="fa arrow"></span></span></a>
+                <span class="hide-menu">الأقسام<span class="fa arrow"></span></span></a>
     <ul class="nav nav-second-level">
-        <li> <a href="/dashboard/categories"> <i class="fa fa-folder-open"></i> All Categories</a> </li>
-        <li> <a href="/dashboard/categories/create"> <i class="fa fa-plus-circle"></i> Add new Category</a><li>
+        <li> <a href="/dashboard/categories"> <i class="fa fa-folder-open"></i>كل الأقسام</a> </li>
+        <li> <a href="/dashboard/categories/create"> <i class="fa fa-plus-circle"></i> اضافة قسم جديد</a><li>
     </ul>
 </li>
 
-<li> <a href="javascript:void(0)" class="waves-effect"><i class="fa fa-shopping-bag"></i>
-        <span class="hide-menu">Products<span class="fa arrow"></span></span></a>
+<li> <a href="javascript:void(0)" class="waves-effect"><i class="fa fa-file-video-o"></i>
+        <span class="hide-menu">الفيديوهات<span class="fa arrow"></span></span></a>
     <ul class="nav nav-second-level">
-        <li> <a href="/dashboard/products"> <i class="fa fa-shopping-basket"></i> All Products</a> </li>
-        <li> <a href="/dashboard/products/create"> <i class="fa fa-plus-circle"></i> Add new Product</a><li>
+        <li> <a href="/dashboard/videos"> <i class="fa fa-file-video-o"></i> كل الفيديوهات </a> </li>
+        <li> <a href="/dashboard/videos/create"> <i class="fa fa-plus-circle"></i> اضافة فيديو جديد </a><li>
     </ul>
 </li>
 
-<li> <a href="javascript:void(0)" class="waves-effect"><i class="fa fa-briefcase"></i>
-        <span class="hide-menu">Careers<span class="fa arrow"></span></span></a>
+<li> <a href="javascript:void(0)" class="waves-effect"><i class="fa fa-file-image-o"></i>
+        <span class="hide-menu">الانفوجراف<span class="fa arrow"></span></span></a>
     <ul class="nav nav-second-level">
-        <li> <a href="/dashboard/careers"> <i class="fa fa-briefcase"></i> All Careers</a> </li>
-        <li> <a href="/dashboard/careers/create"> <i class="fa fa-plus-circle"></i> Add new Career</a><li>
+        <li> <a href="/dashboard/infographics"> <i class="fa fa-file-image-o"></i>كل الانفوجراف </a> </li>
+        <li> <a href="/dashboard/infographics/create"> <i class="fa fa-plus-circle"></i> اضافة انفوجراف جديد </a><li>
     </ul>
 </li>
 
+<li> <a href="javascript:void(0)" class="waves-effect"><i class="fa fa-newspaper-o"></i>
+        <span class="hide-menu">الأخبار<span class="fa arrow"></span></span></a>
+    <ul class="nav nav-second-level">
+        <li> <a href="/dashboard/news"> <i class="fa fa-newspaper-o"></i>كل الأخبار </a> </li>
+        <li> <a href="/dashboard/news/create"> <i class="fa fa-plus-circle"></i> اضافة خبر جديد </a><li>
+    </ul>
+</li>
 
-<li><a href="/dashboard/applicants" class="waves-effect"><i class="fa fa-tasks"></i> <span class="hide-menu"> </span> Applicants</a> </li>
+<li><a href="/dashboard/applicants" class="waves-effect"><i class="fa fa-tasks"></i> <span class="hide-menu"> </span> السير الذاتية  </a> </li>
 
-<li><a href="/dashboard/contact" class="waves-effect"><i class="fa fa-envelope"></i> <span class="hide-menu"> </span> Contact</a> </li>
+<li><a href="/dashboard/contact" class="waves-effect"><i class="fa fa-envelope"></i> <span class="hide-menu"> </span> الشكاوي والاقتراحات</a> </li>
 
 

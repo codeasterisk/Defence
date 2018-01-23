@@ -36,4 +36,34 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Category', 'userepartements', 'user_id', 'cat_id');
     }
+
+    /**
+     *Show User  Videos
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function videos()
+    {
+        return $this->Hasmany('App\Video','user_id');
+    }
+
+    /**
+     *Show User  Infographic
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function infographics()
+    {
+        return $this->Hasmany('App\Gallery','user_id');
+    }
+
+
+    /**
+     *Show User  Videos
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function news()
+    {
+        return $this->Hasmany('App\News','user_id');
+    }
+
+
 }

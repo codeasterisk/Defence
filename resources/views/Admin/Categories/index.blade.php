@@ -1,6 +1,6 @@
 @extends('Admin.layout')
 @section('title')
-  Categories
+  الأقسام
 @endsection
 
 @section('header')
@@ -11,12 +11,12 @@
   <div class="container-fluid">
     <div class="row bg-title">
       <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">Categories</h4> </div>
+        <h4 class="page-title">الأقسام</h4> </div>
       <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
         <ol class="breadcrumb">
-          <li><a href="/">Dashboard</a></li>
-          <li><a href="/dashboard/categories">Categories</a></li>
-          <li class="active">All Categories</li>
+          <li><a href="/dashboard">لوحة التحكم</a></li>
+          <li><a href="/dashboard/categories">الأقسام</a></li>
+          <li class="active">كل الأقسام</li>
         </ol>
       </div>
       <!-- /.col-lg-12 -->
@@ -26,38 +26,63 @@
 
       <div class="col-sm-12">
         <div class="white-box">
-          <h3 class="box-title m-b-0">Categories</h3>
-          <p class="text-muted m-b-30">Controlling Categories</p>
+          <h3 class="box-title m-b-0">الأقسام</h3>
+          <p class="text-muted m-b-30">التحكم بالأقسام</p>
           <div class="table-responsive">
             <table id="example23" class="display nowrap" cellspacing="0" width="100%">
               <thead>
               <tr>
-                <th>ID</th>
-                <th>Name</th>
-                  <th>Number of products</th>
-                  <th>Creation Date</th>
-                <th>Operations</th>
+                <th>#</th>
+                <th>إسم القسم</th>
+                  <th>النوع</th>
+                  <th>عدد المحررين</th>
+                  <th>عدد المواضيع</th>
+                <th>العمليات</th>
               </tr>
               </thead>
               <tfoot>
               <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Number of products</th>
-                  <th>Creation Date</th>
-                  <th>Operations</th>
+                  <th>#</th>
+                  <th>إسم القسم</th>
+                  <th>النوع</th>
+                  <th>عدد المحررين</th>
+                  <th>عدد المواضيع</th>
+                  <th>العمليات</th>
               </tr>
               </tfoot>
               <tbody>
               @foreach($categories as $cat)
               <tr>
                 <td>{{$cat->id}}</td>
-                <td>{{$cat->name}}</td>
-                  <td>{{count($cat->products)}}</td>
-                  <td> {{date("d M Y", strtotime($cat->created_at)) }}</td>
+                <td>{{$cat->title}}</td>
+                  <td>@if($cat->type=="news")
+                          <span class="label label-info">قسم اخباري</span>
+                          @elseif($cat->type=="video")
+                          <span class="label label-info">قسم للفيديوهات</span>
+                      @elseif($cat->type=="infographic")
+                          <span class="label label-info">قسم للانوفجرافيك</span>
+                          @endif
+                  </td>
+                  <td>
+                      @if($cat->type=="news")
+                      {{count($cat->users)}}
+                          @elseif($cat->type == "video")
+                      {{count(\Spatie\Permission\Models\Permission::where('name','control videos')->get())}}
+                      @elseif($cat->type == "infographic")
+                          {{count(\Spatie\Permission\Models\Permission::where('name','control images')->get())}}
+                          @endif
+                  </td>
+                  <td>
+                      @if($cat->type=="news")
+                          {{count($cat->news)}}
+                      @elseif($cat->type == "video")
+                          {{count($cat->videos)}}
+                      @elseif($cat->type == "infographic")
+                          {{count($cat->infographics)}}
+                      @endif
+                  </td>
                 <td class="text-nowrap">
                   <a href="/dashboard/categories/{{$cat->id}}/edit" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                    <a href="/dashboard/categories/{{$cat->id}}" data-toggle="tooltip" data-original-title="View"> <i class="fa fa-search text-info m-r-10"></i></a>
                     <a href="/dashboard/categories/destroy/{{$cat->id}}" id="delete-btn"  data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-trash -o text-danger"></i></a>
                 </td>
               </tr>
@@ -150,8 +175,8 @@
               var link = $(this);
 
               swal({
-                  title: "Are you sure?",
-                  text: "Do you want to Delete This Category!",
+                  title: "هل أنت متأكد من حذف هذا القسم ؟",
+                  text: "هذا سيؤدي إلى حذف كل المقالات المتعلقة بهذا القسم",
                   icon: "warning",
                   buttons: true,
                   dangerMode: true,
@@ -160,7 +185,7 @@
                       window.location = link.attr('href');
                   }
                   else{
-                      swal("cancelled", "Category Deletion Cancelled", "error");
+                      swal("تم الإلغاء", "تم إلغاء الحذف", "جيد");
                   }
               });
 

@@ -52,56 +52,6 @@ $(".counter").counterUp({
         sparklineLogin();
 
 });
- Morris.Area({
-        element: 'morris-area-chart',
-        data: [{
-                    period: '2010',
-                    iphone: 10
-                    
-                }, {
-                    period: '2011',
-                    iphone: 1667
-                }, {
-                    period: '2012',
-                    iphone: 4912
-                }, {
-                    period: '2013',
-                    iphone: 3767
-                }, {
-                    period: '2014',
-                    iphone: 6810
-                }, {
-                    period: '2015',
-                    iphone: 5670
-                }, {
-                    period: '2016',
-                    iphone: 4820
-                }, {
-                    period: '2017',
-                    iphone: 15073
-                }, {
-                    period: '2018',
-                    iphone: 8087
-                }, {
-                    period: '2019',
-                    iphone: 10
-                }
-
-
-                ],
-                lineColors: ['#a5d9c7'],
-                xkey: 'period',
-                ykeys: ['iphone'],
-                labels: ['Site A'],
-                pointSize: 0,
-                lineWidth: 0,
-                fillOpacity: 1,
-                resize: true,
-                behaveLikeLine: true,
-                gridLineColor: '#e0e0e0',
-                hideHover: 'auto'
-        
-    });
 
 $(document).ready(function() {
     

@@ -1,6 +1,6 @@
 @extends('Admin.layout')
 @section('title')
-  Applicants
+  السير الذاتية
 @endsection
 
 @section('header')
@@ -9,11 +9,11 @@
     <div class="container-fluid">
         <div class="row bg-title">
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                <h4 class="page-title">Applicants</h4> </div>
+                <h4 class="page-title">السير الذاتية للمتقدمين</h4> </div>
             <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                 <ol class="breadcrumb">
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li class="active">Applicants</li>
+                    <li><a href="/dashboard">لوحة التحكم</a></li>
+                    <li class="active">السير الذاتية</li>
                 </ol>
             </div>
             <!-- /.col-lg-12 -->
@@ -26,13 +26,13 @@
                     <!-- row -->
                     <div class="row">
                         <div class="col-lg-2 col-md-3  col-sm-12 col-xs-12 inbox-panel">
-                            <div> <a href="#" class="btn btn-custom btn-block waves-effect waves-light">Operations</a>
+                            <div> <a href="#" class="btn btn-custom btn-block waves-effect waves-light">العمليات</a>
                                 <div class="list-group mail-list m-t-20">
-                                    <a href="#" class="list-group-item active">Received<span class="label label-rouded label-success pull-right">{{count(\App\Applicant::all())}}</span></a>
+                                    <a href="#" class="list-group-item active">السير المستقبلة<span class="label label-rouded label-success pull-right">{{count(\App\Joinus::all())}}</span></a>
 
-                                    <a href="#" class="list-group-item active m-t-20">Seen<span class="label label-rouded label-info pull-right">{{count(\App\Applicant::where('status',1)->get())}}</span></a>
+                                    <a href="#" class="list-group-item active m-t-20">المقروء<span class="label label-rouded label-info pull-right">{{count(\App\Joinus::where('status',1)->get())}}</span></a>
 
-                                    <a href="#" class="list-group-item active m-t-20">Unseen<span class="label label-rouded label-danger pull-right">{{count(\App\Applicant::where('status',0)->get())}}</span></a>
+                                    <a href="#" class="list-group-item active m-t-20">الغير مقروء<span class="label label-rouded label-danger pull-right">{{count(\App\Joinus::where('status',0)->get())}}</span></a>
                                 </div>
                             </div>
                         </div>
@@ -44,30 +44,27 @@
                                     <thead>
                                     <tr>
                                         <th>
-                                            ID
+                                            #
                                         </th>
                                         <th>
-                                            Name
-                                        </th>
-
-                                        <th>
-                                            Email
+                                            إسم المتقدم
                                         </th>
 
                                         <th>
-                                            status
+                                            الإيميل
+                                        </th>
+
+                                        <th>
+                                            حالة السيرة
+                                        </th>
+
+
+                                        <th class="text-right">
+                                            تاريخ التقديم
                                         </th>
 
                                         <th class="text-right">
-                                            Career Title
-                                        </th>
-
-                                        <th class="text-right">
-                                            Date
-                                        </th>
-
-                                        <th class="text-right">
-                                            Opertation
+                                            العمليات
                                         </th>
                                     </tr>
                                     </thead>
@@ -76,16 +73,15 @@
                                     <tr class="unread">
                                         <td class="hidden-xs">#{{$applicant->id}}</td>
                                         <td class="hidden-xs">{{$applicant->name}}</td>
-                                        <td class="max-texts"> <a href="/dashboard/applicants/{{$applicant->id}}" />{{$applicant->email}}</td>
+                                        <td class="max-texts">{{$applicant->email}}</td>
                                         </td>
                                         <td class="">
                                             @if($applicant->status==0)
-                                                <span class="label label-danger">UnSeen</span>
+                                                <span class="label label-danger">غير مقروء</span>
                                             @else
-                                                <span class="label label-info">Seen</span>
+                                                <span class="label label-info">مقروء</span>
                                             @endif
                                         </td>
-                                        <td class="text-right"><a href="/dashboard/careers/{{$applicant->career->id}}"> {{ $applicant->career->title}}</a> </td>
                                         <td class="text-right"> {{ date("d M Y", strtotime($applicant->created_at))}} </td>
                                         <td class="text-right">
                                             <a href="/dashboard/applicants/{{$applicant->id}}" data-toggle="tooltip" data-original-title="View"> <i class="fa fa-search text-inverse m-r-10"></i> </a>
@@ -266,8 +262,8 @@
               var link = $(this);
 
               swal({
-                  title: "Are you sure?",
-                  text: "Do you want to Delete This Applicant!",
+                  title: "هل أنت متأكد ؟",
+                  text: "سيتم حذف هذه السير الذاتية",
                   icon: "warning",
                   buttons: true,
                   dangerMode: true,
@@ -276,7 +272,7 @@
                       window.location = link.attr('href');
                   }
                   else{
-                      swal("cancelled", "Applicant Deletion Cancelled", "error");
+                      swal("تم الغاؤه", "تم الغاء حذف السيرة", "جيد ");
                   }
               });
 

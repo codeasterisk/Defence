@@ -2,9 +2,15 @@
 
 namespace App\Http\Traits;
 
-
+use Illuminate\Http\Request;
 use App\User;
 use Alert;
+use Image;
+use DB;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Spatie\String\Str;
 
 trait UserOpertation
 {
@@ -37,8 +43,10 @@ trait UserOpertation
      */
     public function register ($request)
     {
+        DB::beginTransaction();
+        try {
         if ($request->hasFile('profile_img')) {
-            $profileimg = Image::make($request->profile_img)->resize(300, 200)->save(rand(99999, 999999999999) . $request->profileimg);
+          $profileimg=uploader($request,'profile_img');
         }
         $user = User::create([
             'name' =>$request->name,
@@ -48,6 +56,24 @@ trait UserOpertation
             'status'=>$request->status,
             'profile_img'=>$profileimg,
         ]);
+
+        if ($user->role ==2)
+        $user->givePermissionTo($request->permissions);
+            $user->Categories()->attach($request->cat_id);
+        }
+        catch(ValidationException $e)
+        {
+            DB::rollback();
+            Alert::error('عذراً','حدث خطأ ما , حاول ثانية');;
+            return Redirect('/dashboard/users');
+        }
+        catch(\Exception $e)
+        {
+            DB::rollback();
+            Alert::error('عذراً','حدث خطأ ما , حاول ثانية');;
+            return Redirect('/dashboard/users');
+        }
+        DB::commit();
     }
 
     /**
@@ -80,7 +106,6 @@ trait UserOpertation
     public function show($id)
     {
         $user = User::find($id);
-        if (Auth::user()->id == $id) Alert::erorr('Sorry','You Can\'t Delete Your Account'); return redirect('/dashboard/users');
         return view('Admin.Users.view')
             ->with('user',$user);
     }
@@ -94,9 +119,51 @@ trait UserOpertation
     public function edit($id)
     {
         $user = User::find($id);
-        if (Auth::user()->id == $id) Alert::erorr('Sorry','You Can\'t Delete Your Account'); return redirect('/dashboard/users');
+        $cat = $user->Categories;
+        $permissions = $user->permissions;
+        $pre = $permissions->pluck('name');
         return view('Admin.Users.edit')
-            ->with('user',$user);
+            ->with('user',$user)
+            ->with('cat',$cat->pluck('id'))
+            ->with('pre',$pre);
+
+    }
+
+    public function UpdateRecords($user,$request)
+    {
+        DB::beginTransaction();
+        try {
+            if ($request->profile_img != null)
+            {
+                if ($request->hasFile('profile_img')) {
+                    $profileimg = uploader($request,'profile_img');
+                    $user->update(['profile_img' => $profileimg]);
+                }
+        }
+        if($request->password != null) {$user->update(['password'=>bcrypt($request->password),]);}
+        $user->update([
+            'name' =>$request->name,
+            'email' =>$request->email,
+            'role'=>$request->role,
+            'status'=>$request->status,
+        ]);
+        if ($user->role ==2)
+            $user->syncPermissions($request->permissions);
+            $user->Categories()->sync($request->cat_id);
+        }
+        catch(ValidationException $e)
+        {
+            DB::rollback();
+            Alert::error('عذراً','حدث خطأ ما , حاول ثانية');;
+            return Redirect('/dashboard/users');
+        }
+        catch(\Exception $e)
+        {
+            DB::rollback();
+            Alert::error('عذراً','حدث خطأ ما , حاول ثانية');;
+            return Redirect('/dashboard/users');
+        }
+        DB::commit();
     }
 
     /**
@@ -109,23 +176,27 @@ trait UserOpertation
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        if (Auth::user()->id == $id) Alert::erorr('Sorry','You Can\'t Delete Your Account'); return redirect('/dashboard/users');
-
-        $this->validate($request,[
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'sometimes|string|min:6|confirmed',
-            'role' => 'required|string',
-            'status'=>'required|string',
-            'profile_img'=>'sometimes|image|mimes:jpeg,jpg,png,gif|max:100000'
-        ]);
-
-        if ($request->hasFile('profile_img')) {
-            $profileimg = Image::make($request->profile_img)->save(rand(99999, 999999999999) . $request->profileimg);
-            $user->update(['profile_img'=>$profileimg,]);
+        if($request->password != null) {
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+                'password' => 'sometimes|string|min:6|confirmed',
+                'role' => 'required|string',
+                'status' => 'required|string',
+                'profile_img' => 'sometimes|image|mimes:jpeg,jpg,png,gif|max:100000'
+            ]);
+        }elseif($request->password == null)
+        {
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+                'role' => 'required|string',
+                'status' => 'required|string',
+                'profile_img' => 'sometimes|image|mimes:jpeg,jpg,png,gif|max:100000'
+            ]);
         }
-        if($request->password != null) {$user->update(['password'=>bcrypt($request->password),]);}
-               $user->update(array_except($request->all(),['profile_img','password']));
+        //update User Record
+        $this->UpdateRecords($user,$request);
         Alert::success('عظيم','تم تعديل هذا العضو بنجاح');
         return redirect('/dashboard/users');
     }
@@ -139,9 +210,9 @@ trait UserOpertation
     public function destroy($id)
     {
         $user = User::find($id);
-        if (!$user) Alert::erorr('عذراً','ﻻ يوجد عضو بنفس المواصفات'); return redirect('/dashboard/users');
-        if (Auth::user()->id == $id) Alert::erorr('عذراً','ﻻ يوجد عضو بنفس المواصفات');; return redirect('/dashboard/users');
-        if ($user->role == 1) Alert::erorr('عذراً','ﻻ يوجد عضو بنفس المواصفات');; return redirect('/dashboard/users');
+        if (!$user){ Alert::warning('عذراً','ﻻ يوجد عضو بنفس المواصفات'); return redirect('/dashboard/users');}
+        if (Auth::user()->id == $id) {Alert::warning('عذراً','ﻻ يمكنك حذف عضويتك'); return redirect('/dashboard/users');}
+        if ($user->role == 1) {Alert::warning('عذراً','ﻻ يمكنك حذف مدير موقع'); return redirect('/dashboard/users');}
         User::find($id)->delete();
         Alert::success('عظيم','تم حذف العضو بنجاح');
         return redirect('/dashboard/users');

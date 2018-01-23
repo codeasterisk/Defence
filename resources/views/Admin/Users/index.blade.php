@@ -4,6 +4,7 @@
 @endsection
 
 @section('header')
+
   <link href="/admin/plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
 @endsection
@@ -32,12 +33,12 @@
             <table id="example23" class="display nowrap" cellspacing="0" width="100%">
               <thead>
               <tr>
-                <th>#</th>
-                <th>الإسم</th>
-                <th>الايميل</th>
-                <th>العضوية</th>
-                  <th>الحالة</th>
-                  <th>العمليات</th>
+                <th> # </th>
+                <th> الإسم </th>
+                <th> الايميل </th>
+                <th> العضوية </th>
+                  <th> الحالة </th>
+                  <th> العمليات </th>
               </tr>
               </thead>
               <tfoot>
@@ -143,8 +144,6 @@
           ]
       });
   </script>
-  <!--Style Switcher -->
-  <script src="/admin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 
   <script>
       var deleter = {
