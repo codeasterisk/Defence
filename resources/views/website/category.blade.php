@@ -26,9 +26,9 @@
                     <div class="col-md-4">
                         <article class="entry">
                             <div class="entry__img-holder">
-                                <a href="{{ $item->category->type == 'video' ? route('video', ['slug' => $video->slug]) : ( $item->category->type == 'news' ? route('news-post', ['category' => $item->category->slug, 'news' => $item->slug]) : route('info-graph', ['slug' => $infograph->slug])) }}">
+                                <a href="{{ $item->category->type == 'video' ? route('video', ['slug' => $item->slug]) : ( $item->category->type == 'news' ? route('news-post', ['category' => $item->category->slug, 'news' => $item->slug]) : route('info-graph', ['slug' => $infograph->slug])) }}">
                                     <div class="thumb-container thumb-75">
-                                        <img data-src="{{ $item->category->type == 'video' ? "http://img.youtube.com/vi/".str_replace('https://www.youtube.com/embed/', '',$video->url)."/0.jpg" : '/photos/'.$item->img }}" src="img/empty.png" class="entry__img lazyload" alt="">
+                                        <img data-src="{{ $item->category->type == 'video' ? "http://img.youtube.com/vi/".str_replace('https://www.youtube.com/embed/', '',$item->url)."/0.jpg" : '/photos/'.$item->img }}" src="img/empty.png" class="entry__img lazyload" alt="">
                                     </div>
                                 </a>
                             </div>
@@ -36,12 +36,12 @@
                             <div class="entry__body">
                                 <div class="entry__header">
                                     <h2 class="entry__title">
-                                        <a href="{{ $item->category->type == 'video' ? route('video', ['slug' => $video->slug]) : ( $item->category->type == 'news' ? route('news-post', ['category' => $item->category->slug, 'news' => $item->slug]) : route('info-graph', ['slug' => $infograph->slug])) }}">{{ $item->title }}</a>
+                                        <a href="{{ $item->category->type == 'video' ? route('video', ['slug' => $item->slug]) : ( $item->category->type == 'news' ? route('news-post', ['category' => $item->category->slug, 'news' => $item->slug]) : route('info-graph', ['slug' => $infograph->slug])) }}">{{ $item->title }}</a>
                                     </h2>
                                     <ul class="entry__meta">
                                         <li class="entry__meta-author">
                                             <i class="ui-author"></i>
-                                            <a href="">{{ $item->writer }}</a>
+                                            <a href="">{{ $item->writer->name ?? $item->writer }}</a>
                                         </li>
                                         <li class="entry__meta-date">
                                             <i class="ui-date"></i>
@@ -54,9 +54,9 @@
                                         {{--</li>--}}
                                     </ul>
                                 </div>
-                                @if($item->category->type != 'infographic')
+                                @if($item->category->type == 'news')
                                 <div class="entry__excerpt">
-                                    <p>{{ str_limit($item->description,160) }}</p>
+                                    <p>{!! str_limit($item->description,160) !!}</p>
                                 </div>
                                 @endif
                             </div>
