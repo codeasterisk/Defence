@@ -27,7 +27,7 @@
                         <div class="thumb-text-holder">
                             <a href="{{ route('category', ['category' => $latest_news[0]->category->slug]) }}" class="entry__meta-category entry__meta-category-color entry__meta-category-color--salad">{{ $latest_news[0]->category->title }}</a>
                             <h2 class="thumb-entry-title">
-                                <a href="{{ route('news-post', ['category' => $latest_news[0]->category->slug, 'news' => $latest_news[0]->slug ]) }}">{{ $latest_news[0]->title }}</a>
+                                <a href="{{ route('news-post', ['category' => $latest_news[0]->category->slug, 'news' => $latest_news[0]->slug ]) }}">{{ $latest_news[0]->prefix }}: {{ $latest_news[0]->title }}</a>
                             </h2>
                         </div>
                     </article>
@@ -42,7 +42,7 @@
                         <div class="thumb-text-holder">
                             <a href="{{ route('category', ['category' => $latest_news[1]->category->slug]) }}" class="entry__meta-category entry__meta-category-color entry__meta-category-color--salad">{{ $latest_news[1]->category->title }}</a>
                             <h2 class="thumb-entry-title">
-                                <a href="{{ route('news-post', ['category' => $latest_news[1]->category->slug, 'news' => $latest_news[1]->slug ]) }}">{{ $latest_news[1]->title }}</a>
+                                <a href="{{ route('news-post', ['category' => $latest_news[1]->category->slug, 'news' => $latest_news[1]->slug ]) }}">{{ $latest_news[1]->prefix }}: {{ $latest_news[1]->title }}</a>
                             </h2>
                         </div>
                     </article>
@@ -57,7 +57,7 @@
                         <div class="thumb-text-holder">
                             <a href="{{ route('category', ['category' => $latest_news[2]->category->slug]) }}" class="entry__meta-category entry__meta-category-color entry__meta-category-color--salad">{{ $latest_news[2]->category->title }}</a>
                             <h2 class="thumb-entry-title">
-                                <a href="{{ route('news-post', ['category' => $latest_news[2]->category->slug, 'news' => $latest_news[2]->slug ]) }}">{{ $latest_news[2]->title }}</a>
+                                <a href="{{ route('news-post', ['category' => $latest_news[2]->category->slug, 'news' => $latest_news[2]->slug ]) }}">{{ $latest_news[2]->prefix }}: {{ $latest_news[2]->title }}</a>
                             </h2>
                         </div>
                     </article>
@@ -168,7 +168,7 @@
                                             <div class="entry__header">
                                                 <a href="#" class="entry__meta-category"></a>
                                                 <h2 class="entry__title">
-                                                    <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $news->slug ]) }}">{{ $news->title }}</a>
+                                                    <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $news->slug ]) }}">{{ $news->prefix }}: {{ $news->title }}</a>
                                                 </h2>
                                                 <ul class="entry__meta">
                                                     <li class="entry__meta-author">
@@ -232,7 +232,7 @@
                                 <div class="entry__body">
                                     <div class="entry__header">
                                         <h2 class="entry__title">
-                                            <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $category->news[0]->slug ]) }}">{{ $category->news[0]->title }}</a>
+                                            <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $category->news[0]->slug ]) }}">{{ $category->news[0]->prefix }}: {{ $category->news[0]->title }}</a>
                                         </h2>
                                         <ul class="entry__meta">
                                             <li class="entry__meta-author">
@@ -261,7 +261,7 @@
                                     <article class="post-list-small__entry">
                                         <div class="post-list-small__body">
                                             <h3 class="post-list-small__entry-title">
-                                                <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $news->slug ]) }}">{{ $news->title }}</a>
+                                                <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $news->slug ]) }}">{{ $news->prefix }}: {{ $news->title }}</a>
                                             </h3>
                                             <ul class="entry__meta">
                                                 <li class="entry__meta-date">
