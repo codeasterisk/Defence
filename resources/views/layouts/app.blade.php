@@ -184,8 +184,7 @@
                                 </form>
                             </div>
 
-                        </div>
-
+                        </div
                     </div> <!-- end nav right -->
 
                     <!-- Side Menu Button -->
