@@ -383,7 +383,7 @@
 <script src="/website/js/jquery.newsTicker.min.js"></script>
 <script src="/website/js/modernizr.min.js"></script>
 <script src="/website/js/scripts.js"></script>
-<script src="{{('js/app.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 @yield('footer')
 </body>
 </html>

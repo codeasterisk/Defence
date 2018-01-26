@@ -167,7 +167,7 @@
                                         <div class="entry__img-holder">
                                             <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $news->slug ]) }}">
                                                 <div class="thumb-container thumb-75">
-                                                    <img data-src="/photos/{{ $news->img }}" src="/photos/{{ $news->img }}" class="entry__img lazyload" alt="" />
+                                                    <img data-src="/photos/{{ $news->img }}" src="img/empty.png" class="entry__img lazyload" alt="" />
                                                 </div>
                                             </a>
                                         </div>
@@ -232,7 +232,7 @@
                                 <div class="entry__img-holder">
                                     <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $category->news[0]->slug ]) }}">
                                         <div class="thumb-container thumb-75">
-                                            <img data-src="/photos/{{ $category->news[0]->img }}" src="/photos/{{ $category->news[0]->img }}" class="entry__img lazyload" alt="" />
+                                            <img data-src="/photos/{{ $category->news[0]->img }}" src="img/empty.png" class="entry__img lazyload" alt="" />
                                         </div>
                                     </a>
                                 </div>
@@ -416,7 +416,7 @@
                             <div class="entry__img-holder mb-0">
                                 <a href="{{ route('info-graph', ['slug' => $infograph->slug]) }}">
                                     <div class="thumb-bg-holder">
-                                        <img data-src="/photos/{{ $infograph->img }}" style="height: 320px" src="/photos/{{ $infograph->img }}" class="entry__img owl-lazy" alt="">
+                                        <img data-src="/photos/{{ $infograph->img }}" style="height: 320px" src="img/empty.png" class="entry__img owl-lazy" alt="">
                                         <div class="bottom-gradient"></div>
                                     </div>
                                 </a>
