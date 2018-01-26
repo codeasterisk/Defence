@@ -21,7 +21,7 @@ Route::group(['middleware' => 'optimizeImages'], function () {
 
 
     Route::get('videos/{slug}', ['uses' => 'Website\VideosController@view', 'as' => 'video']);
-    Route::get('info-graphics/{slug}', ['uses' => 'Website\GalleryController@view', 'as' => 'info-graph']);
+    Route::get('info-graphics/{slug}', ['uses' => 'Website\GalleriesController@view', 'as' => 'info-graph']);
     Route::get('search/{word}', ['uses' => 'Website\SearchController@search', 'as' => 'search']);
     Route::group(['prefix' => '{category}'], function () {
         Route::get('/',         ['uses' => 'Website\CategoriesController@view', 'as' => 'category']);

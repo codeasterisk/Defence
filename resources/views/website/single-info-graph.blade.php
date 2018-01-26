@@ -23,7 +23,7 @@
                         <a href="{{url('/')}}" class="breadcrumbs__url"><i class="ui-home"></i></a>
                     </li>
                     <li class="breadcrumbs__item">
-                        <a class="breadcrumbs__url">الفيديوهات</a>
+                        <a class="breadcrumbs__url">إنفوجراف</a>
                     </li>
                     <li class="breadcrumbs__item breadcrumbs__item--current">
                         <a href="/{{ $post->category->slug }}" class="breadcrumbs__url">{{ $post->category->title }}</a>
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="entry__img-holder">
-                        <iframe data-src="{{ $post->url }}" style="height: 300px" frameborder="0" allow="autoplay; encrypted-media"src="/website/img/blog/single_post_featured_img.jpg" class="entry__img lazyload" allowfullscreen></iframe>
+                        <img data-src="/photos/{{ $post->img }}" src="/website/img/empty.png" class="entry__img lazyload" alt="">
                     </div>
 
                     <!-- Share -->
@@ -84,16 +84,16 @@
                     <!-- Related Posts -->
                     <div class="related-posts">
                         <div class="title-wrap mt-40">
-                            <h5 class="uppercase">مقالات متعلقة</h5>
+                            <h5 class="uppercase">إقرأ أيضاً</h5>
                         </div>
                         <div class="row row-20">
                             @foreach($related as $post)
                             <div class="col-md-4">
                                 <article class="entry">
                                     <div class="entry__img-holder">
-                                        <a href="{{ route('video', ['slug' => $post->slug]) }}">
+                                        <a href="{{ route('info-graph', ['slug' => $post->slug]) }}">
                                             <div class="thumb-container thumb-75">
-                                                <img data-src="http://img.youtube.com/vi/{{ str_replace('https://www.youtube.com/embed/', '',$video->url) }}/0.jpg" src="/website/img/empty.png" alt="" class=" lazyload">
+                                                <img data-src="/photos/{{ $post->img }}" src="/website/img/empty.png" class="entry__img lazyload" alt="">
                                             </div>
                                         </a>
                                     </div>
@@ -101,7 +101,7 @@
                                     <div class="entry__body">
                                         <div class="entry__header">
                                             <h2 class="entry__title entry__title--sm">
-                                                <a href="{{ route('video', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                                                <a href="{{ route('info-graph', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
                                             </h2>
                                         </div>
                                     </div>
