@@ -176,16 +176,15 @@
                                 <i class="ui-search nav__search-trigger-icon"></i>
                             </a>
                             <div class="nav__search-box" id="nav__search-box" style="right:auto;left: 0;">
-                                <form class="nav__search-form">
-                                    <input type="text" placeholder="إبحث عن مقال" class="nav__search-input">
-                                    <button type="submit" class="search-button btn btn-lg btn-color btn-button" style="right:auto;left: 0;">
+                                <div class="nav__search-form">
+                                    <input type="text" placeholder="إبحث عن مقال" class="nav__search-input" id="search">
+                                    <button onclick="search()" class="search-button btn btn-lg btn-color btn-button" style="right:auto;left: 0;">
                                         <i class="ui-search nav__search-icon"></i>
                                     </button>
-                                </form>
+                                </div>
                             </div>
 
                         </div>
-
                     </div> <!-- end nav right -->
 
                     <!-- Side Menu Button -->
@@ -330,6 +329,8 @@
 <script src="/website/js/modernizr.min.js"></script>
 <script src="/website/js/scripts.js"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script>function search() { window.location.href = "{{ route('search', ['word' => '']) }}/" + $('#search').val(); }</script>
+
 @yield('footer')
 </body>
 </html>

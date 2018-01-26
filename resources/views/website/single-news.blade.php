@@ -44,7 +44,7 @@
 
                     <div class="single-post__entry-header entry__header">
                         <h1 class="single-post__entry-title">
-                            {{ $post->title }}
+                            {{ $post->prefix }}: {{ $post->title }}
                         </h1>
 
                         <ul class="entry__meta">
@@ -115,7 +115,7 @@
                                     <div class="entry__body">
                                         <div class="entry__header">
                                             <h2 class="entry__title entry__title--sm">
-                                                <a href="{{ route('news-post', ['category' => $post->category->slug, 'news' => $post->slug]) }}">{{ $post->title }}</a>
+                                                <a href="{{ route('news-post', ['category' => $post->category->slug, 'news' => $post->slug]) }}">{{ $post->prefix }}: {{ $post->title }}</a>
                                             </h2>
                                         </div>
                                     </div>

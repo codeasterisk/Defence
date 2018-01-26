@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="post-list-small__body">
                                         <h3 class="post-list-small__entry-title">
-                                            <a href="{{ route('news-post', ['category' => $trending->category->slug, 'news' => $trending->slug ]) }}">{{ $trending->title }}</a>
+                                            <a href="{{ route('news-post', ['category' => $trending->category->slug, 'news' => $trending->slug ]) }}">{{ $trending->prefix }}: {{ $trending->title }}</a>
                                         </h3>
                                         <ul class="entry__meta">
                                             <li class="entry__meta-date">

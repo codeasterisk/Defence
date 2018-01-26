@@ -33,10 +33,6 @@ Route::group(['middleware' => 'optimizeImages'], function () {
     Route::get('write',                 ['uses' => 'Website\WritersController@view',  'as' => 'write']);
     Route::post('publish',              ['uses' => 'Website\WritersController@send',  'as' => 'submit-write']);
 
-    Route::group(['prefix' => '{category}'], function () {
-        Route::get('/',         ['uses' => 'Website\CategoriesController@view', 'as' => 'category']);
-        Route::get('{news}',    ['uses' => 'Website\NewsController@view', 'as' => 'news-post']);
-    });
     //Admin Account Routes
     Route::group(['middleware' => 'Admin', 'prefix' => '/dashboard'], function () {
 
@@ -85,4 +81,8 @@ Route::group(['middleware' => 'optimizeImages'], function () {
 
     });
 
+    Route::group(['prefix' => '{category}'], function () {
+        Route::get('/',         ['uses' => 'Website\CategoriesController@view', 'as' => 'category']);
+        Route::get('{news}',    ['uses' => 'Website\NewsController@view', 'as' => 'news-post']);
+    });
 });
