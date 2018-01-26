@@ -14,8 +14,8 @@
         <div class="full-overlay"></div>
         <div class="container">
             <div class="page-title__holder">
-                <h1 class="page-title__title">اتصل بنا</h1>
-                <p class="lead white">نسعد بخدمتكم على مدار الساعة.</p>
+                <h1 class="page-title__title">انضم لنا</h1>
+                <p class="lead white">دائماً هناك مكان لك في فريق شبكة الدفاع.</p>
             </div>
         </div>
     </section>
