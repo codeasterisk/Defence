@@ -33,7 +33,7 @@
     @yield('header')
 </head>
 
-<body class="bg-light">
+<body class="bg-light" id="app">
 
 <!-- Preloader -->
 <div class="loader-mask">
@@ -59,67 +59,11 @@
     <nav class="sidenav__menu-container">
         <ul class="sidenav__menu" role="menubar">
             <!-- Categories -->
+            @foreach(\App\Category::all()  as $category)
             <li>
-                <a href="#" class="sidenav__menu-link sidenav__menu-link-category sidenav__menu-link--orange">أخبار البانتجون</a>
+                <a href="{{ route('category', ['category' => $category->slug])}}" class="sidenav__menu-link sidenav__menu-link-category sidenav__menu-link--orange">{{ $category->title }}</a>
             </li>
-            <li>
-                <a href="#" class="sidenav__menu-link sidenav__menu-link-category sidenav__menu-link--blue">Business</a>
-            </li>
-            <li>
-                <a href="#" class="sidenav__menu-link sidenav__menu-link-category sidenav__menu-link--red">Politics</a>
-            </li>
-            <li>
-                <a href="#" class="sidenav__menu-link sidenav__menu-link-category sidenav__menu-link--salad">Lifestyle</a>
-            </li>
-            <li>
-                <a href="#" class="sidenav__menu-link sidenav__menu-link-category sidenav__menu-link--purple">Tech</a>
-            </li>
-            <li>
-                <a href="#" class="sidenav__menu-link sidenav__menu-link-category sidenav__menu-link--yellow">Fashion</a>
-            </li>
-            <li>
-                <a href="#" class="sidenav__menu-link sidenav__menu-link-category sidenav__menu-link--light-blue">Sport</a>
-            </li>
-            <li>
-                <a href="#" class="sidenav__menu-link sidenav__menu-link-category sidenav__menu-link--violet">Science</a>
-            </li>
-
-            <li>
-                <a href="#" class="sidenav__menu-link">Posts</a>
-                <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
-                <ul class="sidenav__menu-dropdown">
-                    <li><a href="single-post-gallery.html" class="sidenav__menu-link">Gallery Post</a></li>
-                    <li><a href="single-post.html" class="sidenav__menu-link">Video Post</a></li>
-                    <li><a href="single-post.html" class="sidenav__menu-link">Audio Post</a></li>
-                    <li><a href="single-post-quote.html" class="sidenav__menu-link">Quote Post</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="#" class="sidenav__menu-link">Pages</a>
-                <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i class="ui-arrow-down"></i></button>
-                <ul class="sidenav__menu-dropdown">
-                    <li><a href="about.html" class="sidenav__menu-link">About</a></li>
-                    <li><a href="contact.html" class="sidenav__menu-link">Contact</a></li>
-                    <li><a href="search-results.html" class="sidenav__menu-link">Search Results</a></li>
-                    <li><a href="categories.html" class="sidenav__menu-link">Categories</a></li>
-                    <li><a href="shortcodes.html" class="sidenav__menu-link">Shortcodes</a></li>
-                    <li><a href="lazyload.html" class="sidenav__menu-link">Lazyload</a></li>
-                    <li><a href="404.html" class="sidenav__menu-link">404</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="about.html" class="sidenav__menu-link">About</a>
-            </li>
-
-            <li>
-                <a href="contact.html" class="sidenav__menu-link">Contact</a>
-            </li>
-
-            <li>
-                <a href="#" class="sidenav__menu-link">Advertise</a>
-            </li>
+            @endforeach
         </ul>
     </nav>
 
@@ -167,12 +111,9 @@
                             <li class="nav__dropdown">
                                 <a href="#">الأقسام</a>
                                 <ul class="nav__dropdown-menu">
-                                    <li><a href="">قسم رقم 1</a></li>
-                                    <li><a href="">قسم رقم 2</a></li>
-                                    <li><a href="">قسم رقم 3</a></li>
-                                    <li><a href="">قسم رقم 4</a></li>
-                                    <li><a href="">قسم رقم 5</a></li>
-                                    <li><a href="">قسم رقم 6</a></li>
+                                    @foreach(\App\Category::all()  as $category)
+                                    <li><a href="{{ route('category', ['category' => $category->slug])}}">{{ $category->title }}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
 
@@ -281,14 +222,15 @@
         </div>
     </div> <!-- end header -->
 
+    @if($news = \App\Category::where(['title' => 'الأخبار العاجلة'])->first()->news)
     <!-- Trending Now -->
     <div class="trending-now">
         <div class="container relative">
             <span class="trending-now__label">الأخبار العاجلة</span>
             <ul class="newsticker">
-                <li class="newsticker__item"><a href="single-post.html" class="newsticker__item-url">ذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى </a></li>
-                <li class="newsticker__item"><a href="single-post-1.html" class="newsticker__item-url">ذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى</a></li>
-                <li class="newsticker__item"><a href="single-post-3.html" class="newsticker__item-url">ذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى</a></li>
+                @foreach($news as $new)
+                <li class="newsticker__item"><a href="{{ route('news-post', ['category' => $new->category->slug, 'slug' => $new->slug]) }}" class="newsticker__item-url">{{ $new->title }} </a></li>
+                @endforeach
             </ul>
             <div class="newsticker-buttons">
                 <button class="newsticker-button newsticker-button--prev" id="newsticker-button--prev" aria-label="next article"><i class="ui-arrow-right"></i></button>
@@ -296,7 +238,7 @@
             </div>
         </div>
     </div>
-
+    @endif
   @yield('content')
 
     <!-- Footer -->
@@ -436,11 +378,12 @@
 <!-- jQuery Scripts -->
 <script src="/website/js/jquery.min.js"></script>
 <script src="/website/js/bootstrap.min.js"></script>
-<script src="/website/js/easing.min.js"></script>
+{{--<script src="/website/js/easing.min.js"></script>--}}
 <script src="/website/js/owl-carousel.min.js"></script>
 <script src="/website/js/jquery.newsTicker.min.js"></script>
 <script src="/website/js/modernizr.min.js"></script>
 <script src="/website/js/scripts.js"></script>
+<script src="{{('js/app.js')}}"></script>
 @yield('footer')
 </body>
 </html>

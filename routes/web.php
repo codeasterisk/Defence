@@ -20,7 +20,7 @@ Route::group(['middleware' => 'optimizeImages'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::group(['prefix' => '{category}'], function () {
-        Route::get('/',         ['uses' => 'Website\FilltersController@showByCategory', 'as' => 'category']);
+        Route::get('/',         ['uses' => 'Website\CategoriesController@view', 'as' => 'category']);
         Route::get('{news}',    ['uses' => 'Website\NewsController@view', 'as' => 'news-post']);
     });
 
