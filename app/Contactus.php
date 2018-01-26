@@ -12,6 +12,6 @@ class Contactus extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'status', 'email','phone','subject'
+        'name', 'status', 'email','phone','subject', 'message'
     ];
 }

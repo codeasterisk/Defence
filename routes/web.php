@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('website.welcome');
-});
+Route::get('/', ['uses' => 'Website\HomeController@index']);
 
 Auth::routes();
 Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
@@ -21,6 +19,24 @@ Route::group(['middleware' => 'optimizeImages'], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
+
+    Route::get('videos/{slug}',         ['uses' => 'Website\VideosController@view',     'as' => 'video']);
+    Route::get('info-graphics/{slug}',  ['uses' => 'Website\GalleriesController@view',  'as' => 'info-graph']);
+    Route::get('search/{word}',         ['uses' => 'Website\SearchController@search',   'as' => 'search']);
+
+    Route::get('contact-us',            ['uses' => 'Website\ContactUsController@view',  'as' => 'contact-us']);
+    Route::post('contact',              ['uses' => 'Website\ContactUsController@send',  'as' => 'submit-contact-us']);
+
+    Route::get('join-us',               ['uses' => 'Website\JoinUsController@view',    'as' => 'join-us']);
+    Route::post('join',                 ['uses' => 'Website\JoinUsController@send',    'as' => 'submit-join-us']);
+
+    Route::get('write',                 ['uses' => 'Website\WritersController@view',  'as' => 'write']);
+    Route::post('publish',              ['uses' => 'Website\WritersController@send',  'as' => 'submit-write']);
+
+    Route::group(['prefix' => '{category}'], function () {
+        Route::get('/',         ['uses' => 'Website\CategoriesController@view', 'as' => 'category']);
+        Route::get('{news}',    ['uses' => 'Website\NewsController@view', 'as' => 'news-post']);
+    });
     //Admin Account Routes
     Route::group(['middleware' => 'Admin', 'prefix' => '/dashboard'], function () {
 
