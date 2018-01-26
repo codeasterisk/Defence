@@ -12,6 +12,6 @@ class Joinus extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email','phone','about','status'
+        'name', 'email','phone','about','status', 'job_title', 'cv'
     ];
 }

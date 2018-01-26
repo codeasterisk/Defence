@@ -10,6 +10,7 @@ use App\SearchLog;
 use App\Video;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class JoinUsController
 {
@@ -23,17 +24,23 @@ class JoinUsController
     }
 
     public function send(Request $request) {
-        $this->validate($request, [
+        $request->validate([
             'name'      => 'required',
             'email'     => 'required|email',
-            'phone'     => 'required|numeric',
-            'job-title' => 'required',
+            'job_title' => 'required',
             'cv'        => 'required|file|mimes:pdf,docx,doc',
             'about'     => 'required|string|max:255'
         ]);
 
-        Joinus::create($request->all());
+        $filename = time() . '.' . $request->file('cv')->clientExtension();
+        $path = $request->file('cv')->move('cvs', $filename);
 
+        $inputs = $request->all();
 
+        $inputs['cv'] = $filename;
+
+        Joinus::create($inputs);
+
+        return redirect('/');
     }
 }
