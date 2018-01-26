@@ -19,14 +19,14 @@ Route::group(['middleware' => 'optimizeImages'], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
+
+    Route::get('videos/{slug}', ['uses' => 'Website\VideosController@view', 'as' => 'video']);
+    Route::get('info-graphics/{slug}', ['uses' => 'Website\GalleryController@view', 'as' => 'info-graph']);
+    Route::get('search/{word}', ['uses' => 'Website\SearchController@search', 'as' => 'search']);
     Route::group(['prefix' => '{category}'], function () {
         Route::get('/',         ['uses' => 'Website\CategoriesController@view', 'as' => 'category']);
         Route::get('{news}',    ['uses' => 'Website\NewsController@view', 'as' => 'news-post']);
     });
-
-    Route::get('videos/{slug}', ['uses' => 'VideosController@view', 'as' => 'video']);
-    Route::get('info-graphics/{slug}', ['uses' => 'GalleryController@view', 'as' => 'info-graph']);
-    Route::get('search/{word}', ['uses' => 'Website\SearchController@search', 'as' => 'search']);
     //Admin Account Routes
     Route::group(['middleware' => 'Admin', 'prefix' => '/dashboard'], function () {
 

@@ -23,7 +23,7 @@
                         <a href="{{url('/')}}" class="breadcrumbs__url"><i class="ui-home"></i></a>
                     </li>
                     <li class="breadcrumbs__item">
-                        <a class="breadcrumbs__url">الأخبار</a>
+                        <a class="breadcrumbs__url">الفيديوهات</a>
                     </li>
                     <li class="breadcrumbs__item breadcrumbs__item--current">
                         <a href="/{{ $post->category->slug }}" class="breadcrumbs__url">{{ $post->category->title }}</a>
@@ -41,7 +41,7 @@
                         <ul class="entry__meta">
                             <li class="entry__meta-author">
                                 <i class="ui-author"></i>
-                                <a>{{ $post->writer }}</a>
+                                <a>{{ $post->writer->name }}</a>
                             </li>
                             <li class="entry__meta-date">
                                 <i class="ui-date"></i>
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="entry__img-holder">
-                        <img data-src="/photos/{{$post->img}}" src="/website/img/blog/single_post_featured_img.jpg" alt="" class="entry__img lazyload">
+                        <iframe data-src="{{ $post->url }}" style="height: 300px" frameborder="0" allow="autoplay; encrypted-media"src="/website/img/blog/single_post_featured_img.jpg" class="entry__img lazyload" allowfullscreen></iframe>
                     </div>
 
                     <!-- Share -->
@@ -70,11 +70,11 @@
                     </div> <!-- share -->
 
                     <div class="entry__article">
-                        {!! $post->subject !!}
+                        {!! $post->description !!}
                         <!-- tags -->
                         <div class="entry__tags">
                             <span class="entry__tags-label">الكلمات الدلالية:</span>
-                            @foreach(explode(" ", $post->description) as $word)
+                            @foreach(explode(" ", $post->title) as $word)
                                 <a href="{{ route('search', ['word' => $word]) }}" rel="tag">{{ $word }}</a>
                             @endforeach
                         </div> <!-- end tags -->
@@ -93,7 +93,8 @@
                                     <div class="entry__img-holder">
                                         <a href="{{ route('news-post', ['category' => $post->category->slug, 'news' => $post->slug]) }}">
                                             <div class="thumb-container thumb-75">
-                                                <img data-src="/photos/{{ $post->img }}" src="/website/img/empty.png" class="entry__img lazyload" alt="">
+                                                <iframe src="{{ $post->url }}" frameborder="0" allow="autoplay; encrypted-media" class="entry__img lazyload" allowfullscreen></iframe>
+                                                {{--<img data-src="/photos/{{ $post->img }}" src="/website/img/empty.png" class="entry__img lazyload" alt="">--}}
                                             </div>
                                         </a>
                                     </div>
