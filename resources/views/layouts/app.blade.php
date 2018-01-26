@@ -97,7 +97,7 @@
 
                     <!-- Mobile logo -->
                     <a href="index.html" class="logo logo--mobile d-lg-none">
-                        <img class="logo__img" src="/website/img/logo_mobile.png" srcset="/website/img/logo_mobile.png 1x, /website/img/logo_mobile@2x.png 2x" alt="logo">
+                        <img class="logo__img" src="/website/img/logo1.png" style="width: 30px;" srcset="/website/img/logo1.png 1x, /website/img/logo1.png 2x" alt="logo">
                     </a>
 
                     <!-- Nav-wrap -->
@@ -105,7 +105,7 @@
                         <ul class="nav__menu">
 
                             <li class="active">
-                                <a href="index.html">الرئيسية</a>
+                                <a href="{{ url('/') }}">الرئيسية</a>
                             </li>
 
                             <li class="nav__dropdown">
@@ -175,10 +175,10 @@
                             <a href="#" class="nav__search-trigger" id="nav__search-trigger">
                                 <i class="ui-search nav__search-trigger-icon"></i>
                             </a>
-                            <div class="nav__search-box" id="nav__search-box">
+                            <div class="nav__search-box" id="nav__search-box" style="right:auto;left: 0;">
                                 <form class="nav__search-form">
-                                    <input type="text" placeholder="Search an article" class="nav__search-input">
-                                    <button type="submit" class="search-button btn btn-lg btn-color btn-button">
+                                    <input type="text" placeholder="إبحث عن مقال" class="nav__search-input">
+                                    <button type="submit" class="search-button btn btn-lg btn-color btn-button" style="right:auto;left: 0;">
                                         <i class="ui-search nav__search-icon"></i>
                                     </button>
                                 </form>
@@ -205,16 +205,9 @@
     <div class="header">
         <div class="container">
             <div class="flex-parent align-items-center">
-                <!-- Ad Banner 728 -->
-                <div class="text-center">
-                    <a href="#">
-                        <img src="/website/img/blog/placeholder_leaderboard.jpg" alt="">
-                    </a>
-                </div>
-
                 <!-- Logo -->
                 <a href="index.html" class="logo d-none d-lg-block" style="width: 160px">
-                   <img class="logo__img" src="/website/img/logo1.png" srcset="/website/img/logo1.png 1x, /website/img/logo@2x.png 2x" alt="logo">
+                   <img class="logo__img" src="/website/img/logo1.png" srcset="/website/img/logo1.png 1x, /website/img/logo1.png 2x" alt="logo">
                 </a>
 
 
@@ -255,8 +248,8 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="widget">
-                            <a href="index.html">
-                             <img src="/website/img/logo1.png" srcset="/website/img/logo1.png 1x, /website/img/logo_mobile@2x.png 2x" class="logo__img" style="height: 120px" alt="">
+                            <a href="{{ url('/') }}">
+                             <img src="/website/img/logo1.png" srcset="/website/img/logo1.png 1x, /website/img/logo1.png 2x" class="logo__img" style="height: 120px" alt="">
 
                             </a>
                             <p class="mt-20">
@@ -266,87 +259,35 @@
                     </div>
 
                     <div class="col-lg-3 col-md-6">
-                        <h4 class="widget-title">آخر الأخبار</h4>
-                        <ul class="post-list-small">
-                            <li class="post-list-small__item">
-                                <article class="post-list-small__entry clearfix">
-                                    <div class="post-list-small__img-holder">
-                                        <div class="thumb-container thumb-75">
-                                            <a href="single-post.html">
-                                                <img data-src="/website/img/blog/popular_post_1.jpg" src="/website/img/empty.png" alt="" class="lazyload">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="post-list-small__body">
-                                        <h3 class="post-list-small__entry-title">
-                                            <a href="single-post.html">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة</a>
-                                        </h3>
-                                        <ul class="entry__meta">
-                                            <li class="entry__meta-date">
-                                                <i class="ui-date"></i>
-                                                21 اكتوبر, 2017
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </article>
-                            </li>
-                            <li class="post-list-small__item">
-                                <article class="post-list-small__entry clearfix">
-                                    <div class="post-list-small__img-holder">
-                                        <div class="thumb-container thumb-75">
-                                            <a href="single-post.html">
-                                                <img data-src="/website/img/blog/popular_post_2.jpg" src="/website/img/empty.png" alt="" class="lazyload">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="post-list-small__body">
-                                        <h3 class="post-list-small__entry-title">
-                                            <a href="single-post.html">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة</a>
-                                        </h3>
-                                        <ul class="entry__meta">
-                                            <li class="entry__meta-date">
-                                                <i class="ui-date"></i>
-                                                21 اكتوبر, 2017
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </article>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="widget widget__newsletter">
-                            <h4 class="widget-title">تابعنا</h4>
-
-                            <div class="socials mb-20">
-                                <a href="#" class="social social-facebook" aria-label="facebook"><i class="ui-facebook"></i></a>
-                                <a href="#" class="social social-twitter" aria-label="twitter"><i class="ui-twitter"></i></a>
-                                <a href="#" class="social social-google-plus" aria-label="google+"><i class="ui-google"></i></a>
-                                <a href="#" class="social social-youtube" aria-label="youtube"><i class="ui-youtube"></i></a>
-                                <a href="#" class="social social-instagram" aria-label="instagram"><i class="ui-instagram"></i></a>
-                            </div>
-
-                            <form class="mc4wp-form" method="post">
-                                <div class="mc4wp-form-fields">
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
                         <div class="widget widget_nav_menu">
-                            <h4 class="widget-title">روابط مهمة</h4>
+                            <h4 class="widget-title">الأخبار</h4>
                             <ul>
-                                <li><a href="about.html">عن الموقع</a></li>
-                                <li><a href="contact.html">الفيديوهات</a></li>
-                                <li><a href="categories.html">الأقسام</a></li>
-                                <li><a href="shortcodes.html">الانفوجراف</a></li>
+                                @foreach(\App\Category::where(['type' => 'news'])->get()  as $category)
+                                    <li><a href="{{ route('category', ['category' => $category->slug])}}">{{ $category->title }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
-
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget widget_nav_menu">
+                            <h4 class="widget-title">الإنفوجراف</h4>
+                            <ul>
+                                @foreach(\App\Category::where(['type' => 'infographic'])->get()  as $category)
+                                    <li><a href="{{ route('category', ['category' => $category->slug])}}">{{ $category->title }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="widget widget_nav_menu">
+                            <h4 class="widget-title">الفديوهات</h4>
+                            <ul>
+                                @foreach(\App\Category::where(['type' => 'video'])->get()  as $category)
+                                    <li><a href="{{ route('category', ['category' => $category->slug])}}">{{ $category->title }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div> <!-- end container -->
@@ -357,15 +298,14 @@
                     <div class="col-lg-7 order-lg-2 text-right text-md-center">
                         <div class="widget widget_nav_menu">
                             <ul>
-                                <li><a href="#">الشروط والاحكام</a></li>
-                                <li><a href="#">اتصل بنا</a></li>
-                                <li style="padding-right: 10px"><a href="#">انضم الينا</a></li>
+                                <li><a href="{{ route('contact-us') }}">اتصل بنا</a></li>
+                                <li style="padding-right: 10px"><a href="{{ route('join-us') }}">انضم الينا</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-5 order-lg-1 text-md-center">
               <span class="copyright">
-                جميع الحقوق محفوظ لموقع شبكة الدفاع | تطوير وتصميم شركة كود أثريك 2017
+                جميع الحقوق محفوظ لموقع شبكة الدفاع | تطوير وتصميم شركة كود أستريسك 2017
               </span>
                     </div>
                 </div>

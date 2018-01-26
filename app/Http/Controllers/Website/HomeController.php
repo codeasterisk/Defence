@@ -13,9 +13,13 @@ use Illuminate\Http\Request;
 class HomeController
 {
     public function index() {
+        $news = News::orderby('created_at', 'desc')->get()->take(5);
+        $news[3] = Gallery::orderBy('created_at', 'desc')->first();
+        $news[4] = Video::orderBy('created_at', 'desc')->first();
+
         return view('website.welcome')
             ->with('categories', Category::all())
-            ->with('latest_news', News::orderby('created_at', 'desc')->get()->take(5))
+            ->with('latest_news', $news)
             ->with('pane_news', Category::where(['type' => 'news'])->get())
             ->with('pane_latest', Category::where(['type' => 'news'])->orderBy('created_at', 'desc')->get())
             ->with('trendings', News::orderBy('clicks', 'desc')->get())
