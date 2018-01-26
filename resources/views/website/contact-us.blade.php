@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                                 <input type="submit" class="btn btn-lg btn-color btn-button" style="margin: 0 auto" value="أرسل">
-                                <div id="" class="">@if($errors->any()){{$errors->all()}}@endif</div>
+                                <div id="" class="">@if($errors->any())@foreach($errors->all() as $error){!! $error !!}@endforeach @endif</div>
                             </div>
                         </form>
 

@@ -111,5 +111,5 @@ function make_slug($string = null, $separator = "-") {
     // Convert whitespaces and underscore to the given separator
     $string = preg_replace("/[\s_]/", $separator, $string);
 
-    return $string;
+    return $string . '-' . time();
 }
