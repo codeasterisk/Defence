@@ -20,9 +20,13 @@ Route::group(['middleware' => 'optimizeImages'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
 
-    Route::get('videos/{slug}', ['uses' => 'Website\VideosController@view', 'as' => 'video']);
-    Route::get('info-graphics/{slug}', ['uses' => 'Website\GalleriesController@view', 'as' => 'info-graph']);
-    Route::get('search/{word}', ['uses' => 'Website\SearchController@search', 'as' => 'search']);
+    Route::get('videos/{slug}',         ['uses' => 'Website\VideosController@view',     'as' => 'video']);
+    Route::get('info-graphics/{slug}',  ['uses' => 'Website\GalleriesController@view',  'as' => 'info-graph']);
+    Route::get('search/{word}',         ['uses' => 'Website\SearchController@search',   'as' => 'search']);
+    Route::get('contact-us',            ['uses' => 'Website\ContactUsController@view',  'as' => 'contact-us']);
+    Route::post('contact',              ['uses' => 'Website\ContactUsController@send',  'as' => 'submit-contact-us']);
+    Route::get('join-us',               ['uses' => 'Website\JointUsController@view',    'as' => 'join-us']);
+    Route::get('write',                 ['uses' => 'Website\ContactUsController@view',  'as' => 'write']);
     Route::group(['prefix' => '{category}'], function () {
         Route::get('/',         ['uses' => 'Website\CategoriesController@view', 'as' => 'category']);
         Route::get('{news}',    ['uses' => 'Website\NewsController@view', 'as' => 'news-post']);

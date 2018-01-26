@@ -109,32 +109,36 @@
                             </li>
 
                             <li class="nav__dropdown">
-                                <a href="#">الأقسام</a>
+                                <a href="#">الأخبار</a>
                                 <ul class="nav__dropdown-menu">
-                                    @foreach(\App\Category::all()  as $category)
+                                    @foreach(\App\Category::where(['type' => 'news'])->get()  as $category)
                                     <li><a href="{{ route('category', ['category' => $category->slug])}}">{{ $category->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
 
-
-
-                            <li><a href="#"><span>فيديوهات</span></a>
+                            <li class="nav__dropdown">
+                                <a href="#">فيديوهات</a>
+                                <ul class="nav__dropdown-menu">
+                                    @foreach(\App\Category::where(['type' => 'video'])->get()  as $category)
+                                        <li><a href="{{ route('category', ['category' => $category->slug])}}">{{ $category->title }}</a></li>
+                                    @endforeach
+                                </ul>
                             </li>
 
-                            <li><a href="#"><span>صور وانفوجراف</span></a>
+                            <li class="nav__dropdown">
+                                <a href="#">صور وانفوجراف</a>
+                                <ul class="nav__dropdown-menu">
+                                    @foreach(\App\Category::where(['type' => 'infographic'])->get()  as $category)
+                                        <li><a href="{{ route('category', ['category' => $category->slug])}}">{{ $category->title }}</a></li>
+                                    @endforeach
+                                </ul>
                             </li>
 
-                            <li><a href="#"><span>عن المجموعة</span></a>
-
                             </li>
 
-                            <li><a href="#"><span>انضم الينا</span></a></li>
-                            <li><a href="#"><span>الشروط والأحكام</span></a></li>
-
-                            <li><a href="#"><span>اتصل بنا</span></a>
-
-                            </li>
+                            <li><a href="{{ route('join-us') }}"><span>انضم الينا</span></a></li>
+                            <li><a href="{{ route('contact-us') }}"><span>اتصل بنا</span></a> </li>
 
 
 
@@ -147,6 +151,8 @@
 
                         <!-- Socials -->
                         <div class="nav__right-item socials nav__socials d-none d-lg-flex">
+                            <li><a href="{{ route('write') }}" style="color:white; padding: 5px; border-radius: 5px" class=" btn-color"><span>شاركنا بمقالك</span></a></li>
+
                             <a class="social social-facebook social--nobase" href="#" target="_blank" aria-label="facebook">
                                 <i class="ui-facebook"></i>
                             </a>
