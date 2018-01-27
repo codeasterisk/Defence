@@ -72,6 +72,7 @@
                 <td class="text-nowrap">
                   <a href="/dashboard/users/{{$user->id}}/edit" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                   <a href="/dashboard/users/destroy/{{$user->id}}" id="delete-btn"  data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-trash -o text-danger"></i></a>
+                    <a href="/dashboard/users/{{$user->id}}" data-toggle="tooltip" data-original-title="view"> <i class="fa fa-search text-info m-r-10"></i></a>
                 </td>
               </tr>
                 @endforeach

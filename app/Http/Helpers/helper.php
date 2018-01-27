@@ -1,8 +1,20 @@
 <?php
 /**
+ * Setting Name
+ * @param $name
+ * @return mixed
+ */
+function getsetting($name)
+{
+    $setting=\App\Setting::where('name',$name)->first();
+    return $setting->value;
+}
+
+/**
  * Users Accounts roles
  * @return array
  */
+
 function roles()
 {
   $array=[
@@ -58,7 +70,7 @@ function cat_type()
  */
 function uploadpath()
 {
-    return '/public/upload/';
+    return '/public/photos/';
 }
 
 /**
@@ -80,7 +92,7 @@ function uploader($request,$img_name)
  */
 function getimg($filename)
 {
-    return '/upload/'.$filename;
+    return '/photos/'.$filename;
 }
 
 /**

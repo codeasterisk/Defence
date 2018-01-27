@@ -23,7 +23,7 @@
                                     <div class="post-list-small__img-holder">
                                         <div class="thumb-container thumb-75">
                                             <a href="{{ route('news-post', ['category' => $trending->category->slug, 'news' => $trending->slug ]) }}">
-                                                <img data-src="/photos/{{ $trending->img }}" src="/website/img/empty.png" alt="" class=" lazyload">
+                                                <img data-src="{{getimg($trending->img) }}" src="/website/img/empty.png" alt="" class=" lazyload">
                                             </a>
                                         </div>
                                     </div>
@@ -87,26 +87,17 @@
     </div> <!-- end widget ad 300 -->
 
     <!-- Widget Socials -->
-    <div class="widget widget-socials">
+    <div class="widget widget-socials text-center">
         <h4 class="widget-title">تابعنا على السوشيال ميديا</h4>
-        <div class="socials">
-            <a class="social social-facebook social--large" href="#" title="facebook" target="_blank" aria-label="facebook">
+        <div class="socials" style="margin-right:70px;">
+            <a class="social social-facebook social--large" href="{{getsetting('facebook')}}"  title="facebook" target="_blank" aria-label="facebook">
                 <i class="ui-facebook"></i>
             </a><!--
-              --><a class="social social-twitter social--large" href="#" title="twitter" target="_blank" aria-label="twitter">
+              --><a class="social social-twitter social--large" href="{{getsetting('twitter')}}"  title="twitter" target="_blank" aria-label="twitter">
                 <i class="ui-twitter"></i>
             </a><!--
-              --><a class="social social-google-plus social--large" href="#" title="google" target="_blank" aria-label="google">
-                <i class="ui-google"></i>
-            </a><!--
-              --><a class="social social-instagram social--large" href="#" title="instagram" target="_blank" aria-label="instagram">
-                <i class="ui-instagram"></i>
-            </a><!--
-              --><a class="social social-youtube social--large" href="#" title="youtube" target="_blank" aria-label="youtube">
+              --><a class="social social-youtube social--large" href="{{getsetting('youtube')}}"  title="youtube" target="_blank" aria-label="youtube">
                 <i class="ui-youtube"></i>
-            </a><!--
-              --><a class="social social-rss social--large" href="#" title="rss" target="_blank" aria-label="rss">
-                <i class="ui-rss"></i>
             </a>
         </div>
     </div> <!-- end widget socials -->
@@ -121,7 +112,7 @@
                     <div class="entry__img-holder mb-0">
                         <a href="{{ route('info-graph', ['slug' => $infograph->slug]) }}">
                             <div class="thumb-bg-holder">
-                                <img data-src="/photos/{{ $infograph->img }}" style="height: 320px" src="/photos/{{ $infograph->img }}" class="entry__img owl-lazy" alt="">
+                                <img data-src="{{getimg($infograph->img) }}" style="height: 320px" src="{{ getimg($infograph->img) }}" class="entry__img owl-lazy" alt="">
                                 <div class="bottom-gradient"></div>
                             </div>
                         </a>

@@ -12,6 +12,6 @@ class Setting extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'value', 'type'
+        'name', 'value', 'type','key'
     ];
 }

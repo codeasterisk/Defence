@@ -59,6 +59,11 @@ Route::group(['middleware' => 'optimizeImages'], function () {
         Route::resources(['contact' => 'Admin\ContactController']);
         Route::get('contact/destroy/{id}', 'Admin\ContactController@destroy');
 
+        Route::get('setting', 'Admin\SettingController@index');
+        Route::post('setting', 'Admin\SettingController@store');
+
+        Route::get('logs', 'Admin\LogController@index');
+
     });
 
     //DataEntry Account Routes

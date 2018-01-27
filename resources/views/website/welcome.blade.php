@@ -7,7 +7,11 @@
 @section('header')
 
 @endsection
-
+@section('meta')
+    <meta name="keywords" content="{{getsetting('MetaTags')}}">
+    <meta name="description" content="{{getsetting('SiteDesciprtion')}}">
+    <meta name="author" content="شركة كود أستيريسك لتطوير البرمجيات, مصر - codeasterisk.com">
+@endsection
 @section('content')
     <!-- Featured Posts Grid -->
     <section class="featured-posts-grid bg-dark">
@@ -18,8 +22,8 @@
                 <div id="owl-hero-grid" class="owl-carousel owl-theme owl-carousel--dots-inside">
 
                     <article class="entry featured-posts-grid__entry">
-                        <div class="thumb-bg-holder owl-lazy" data-src="/photos/{{ $latest_news[0]->img }}">
-                            <img src="/photos/{{ $latest_news[0]->img }}" alt="" class="d-none">
+                        <div class="thumb-bg-holder owl-lazy" data-src="{{getimg($latest_news[0]->img) }}">
+                            <img src="{{getimg($latest_news[0]->img) }}" alt="" class="d-none">
                             <a href="{{ route('news-post', ['category' => $latest_news[0]->category->slug, 'news' => $latest_news[0]->slug ]) }}" class="thumb-url"></a>
                             <div class="bottom-gradient"></div>
                         </div>
@@ -33,8 +37,8 @@
                     </article>
 
                     <article class="entry featured-posts-grid__entry">
-                        <div class="thumb-bg-holder owl-lazy" data-src="/photos/{{ $latest_news[1]->img }}">
-                            <img src="/photos/{{ $latest_news[1]->img }}" alt="" class="d-none">
+                        <div class="thumb-bg-holder owl-lazy" data-src="{{getimg($latest_news[1]->img)}}">
+                            <img src="{{ getimg($latest_news[1]->img) }}" alt="" class="d-none">
                             <a href="{{ route('news-post', ['category' => $latest_news[1]->category->slug, 'news' => $latest_news[1]->slug ]) }}" class="thumb-url"></a>
                             <div class="bottom-gradient"></div>
                         </div>
@@ -48,8 +52,8 @@
                     </article>
 
                     <article class="entry featured-posts-grid__entry">
-                        <div class="thumb-bg-holder owl-lazy" data-src="/photos/{{ $latest_news[2]->img }}">
-                            <img src="/photos/{{ $latest_news[2]->img }}" alt="" class="d-none">
+                        <div class="thumb-bg-holder owl-lazy" data-src="{{getimg($latest_news[2]->img) }}">
+                            <img src="{{ getimg($latest_news[2]->img) }}" alt="" class="d-none">
                             <a href="{{ route('news-post', ['category' => $latest_news[2]->category->slug, 'news' => $latest_news[2]->slug ]) }}" class="thumb-url"></a>
                             <div class="bottom-gradient"></div>
                         </div>
@@ -68,7 +72,7 @@
 
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
                 <article class="entry featured-posts-grid__entry">
-                    <div class="thumb-bg-holder" style="background-image: url('/photos/{{ $latest_news[3]->img }}');">
+                    <div class="thumb-bg-holder" style="background-image: url({{ getimg($latest_news[3]->img) }});">
                         <a href="{{ route('info-graph', ['slug' => $latest_news[3]->slug ]) }}" class="thumb-url"></a>
                         <div class="bottom-gradient"></div>
                     </div>
@@ -159,7 +163,7 @@
                                         <div class="entry__img-holder">
                                             <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $news->slug ]) }}">
                                                 <div class="thumb-container thumb-75">
-                                                    <img data-src="/photos/{{ $news->img }}" src="img/empty.png" class="entry__img lazyload" alt="" />
+                                                    <img data-src="{{getimg($news->img )}}" src="img/empty.png" class="entry__img lazyload" alt="" />
                                                 </div>
                                             </a>
                                         </div>
@@ -224,7 +228,7 @@
                                 <div class="entry__img-holder">
                                     <a href="{{ route('news-post', ['category' => $category->slug, 'news' => $category->news[0]->slug ]) }}">
                                         <div class="thumb-container thumb-75">
-                                            <img data-src="/photos/{{ $category->news[0]->img }}" src="img/empty.png" class="entry__img lazyload" alt="" />
+                                            <img data-src="{{ getimg($category->news[0]->img) }}" src="img/empty.png" class="entry__img lazyload" alt="" />
                                         </div>
                                     </a>
                                 </div>

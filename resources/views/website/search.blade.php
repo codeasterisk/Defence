@@ -7,7 +7,10 @@
 @section('header')
 
 @endsection
-
+@section('meta')
+    <meta name="keywords" content="search, بحث, {{ $word }}">
+    <meta name="description" content='نتائج البحث عن "{{ $word }}"'>
+@endsection
 @section('content')
     <br>
     <br>
@@ -32,7 +35,7 @@
                     <div class="entry__img-holder post-list__img-holder">
                         <a href="{{ route('news-post', ['category' => $post->category->slug, 'news' => $post->slug]) }}">
                             <div class="thumb-container thumb-75">
-                                <img data-src="/photos/{{ $post->img }}" src="img/empty.png" class="entry__img lazyload" alt="">
+                                <img data-src="{{ getimg($post->img) }}" src="img/empty.png" class="entry__img lazyload" alt="">
                             </div>
                         </a>
                     </div>

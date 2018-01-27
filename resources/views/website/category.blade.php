@@ -7,7 +7,10 @@
 @section('header')
 
 @endsection
-
+@section('meta')
+    <meta name="keywords" content="search, بحث, قسم, {{ $category }}">
+    <meta name="description" content="قسم {{ $category }}">
+@endsection
 @section('content')
     <br>
     <br>
@@ -37,7 +40,7 @@
                                 <div class="entry__img-holder">
                                     <a href="{{ $item->category->type == 'video' ? route('video', ['slug' => $item->slug]) : ( $item->category->type == 'news' ? route('news-post', ['category' => $item->category->slug, 'news' => $item->slug]) : route('info-graph', ['slug' => $item->slug])) }}">
                                         <div class="thumb-container thumb-75">
-                                            <img data-src="{{ $item->category->type == 'video' ? "http://img.youtube.com/vi/".str_replace('https://www.youtube.com/embed/', '',$item->url)."/0.jpg" : '/photos/'.$item->img }}" src="img/empty.png" class="entry__img lazyload" alt="">
+                                            <img data-src="{{ $item->category->type == 'video' ? "http://img.youtube.com/vi/".str_replace('https://www.youtube.com/embed/', '',$item->url)."/0.jpg" : getimg($item->img) }}" src="img/empty.png" class="entry__img lazyload" alt="">
                                         </div>
                                     </a>
                                 </div>

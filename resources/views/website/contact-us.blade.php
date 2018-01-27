@@ -7,13 +7,16 @@
 @section('header')
 
 @endsection
-
+@section('meta')
+    <meta name="keywords" content="contact, us, تواصل, معنا, شبكة, اخبار, الدفاع, كن, انت الصحفي, جديد, حصري">
+    <meta name="description" content='تواصل معنا على شبكة اخبار الدفاع'>
+@endsection
 @section('content')
     <!-- Page Title -->
     <section class="page-title" style="background-image: url(/website/img/blog/contact.jpg);">
         <div class="full-overlay"></div>
         <div class="container">
-            <div class="page-title__holder">
+            <div class="page-title__holdeء2r">
                 <h1 class="page-title__title">اتصل بنا</h1>
                 <p class="lead white">نسعد بخدمتكم على مدار الساعة.</p>
             </div>
