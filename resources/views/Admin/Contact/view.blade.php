@@ -46,11 +46,11 @@
                                     <span class="media-meta pull-right">{{ date("d M Y", strtotime($contact->created_at))}}</span>
                                     <h4 class="text-danger m-0">{{$contact->name}}</h4> <small class="text-muted"> من : {{$contact->email}}</small>
                                     <br>
-                                    <small class="text-muted">تليفون : {{$contact->phone}}</small>
+                                    <small class="text-muted">عنوان الرسالة : {{$contact->subject}}</small>
                                 </div>
                             </div>
                             <Br>
-                            <p>{{$contact->subject}}</p>
+                            <p>{{$contact->message}}</p>
                             <hr>
                         </div>
                     </div>

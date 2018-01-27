@@ -61,16 +61,11 @@
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
       <div class="user-profile">
         <div class="dropdown user-pro-body">
-          <div><img src="{{Auth::user()->profile_img}}" alt="user-img" class="img-circle"></div>
+          <div><img src="{{getimg(Auth::user()->profile_img)}}" alt="user-img" class="img-circle"></div>
           <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span> {{\Illuminate\Support\Facades\Auth::user()->name}} </a>
           <ul class="dropdown-menu animated flipInY">
-            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="login.html"><i class="fa fa-power-off"></i> Logout</a></li>
+            <li><a href="/users/{{Auth::user()->id}}/edit/"><i class="ti-user"></i> My Profile</a></li>
+            <li><a href="/logout"><i class="fa fa-power-off"></i> Logout</a></li>
           </ul>
         </div>
       </div>

@@ -6,6 +6,12 @@
 @section('header')
 
     <link rel="stylesheet" href="/admin/plugins/bower_components/html5-editor/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" href="/admin/plugins/bower_components/html5-editor/bootstrap-wysihtml5.css" />
+
+    <link href="/admin/plugins/bower_components/custom-select/custom-select.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/plugins/bower_components/switchery/dist/switchery.min.css" rel="stylesheet" />
+    <link href="/admin/plugins/bower_components/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/admin/plugins/bower_components/dropify/dist/css/dropify.min.css">
 @endsection
 
 @section('content')
@@ -15,11 +21,11 @@
 <div class="container-fluid">
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">{{$type}} Setting</h4> </div>
+            <h4 class="page-title"></h4> </div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
             <ol class="breadcrumb">
-                <li><a href="/">Dashboard</a></li>
-                <li class="active"><a href="/dashboard/setting/{{$type}}">   {{$type}} Setting</a></li>
+                <li><a href="/">لوحة التحكم</a></li>
+                <li class="active"><a href="/dashboard/setting">الاعدادات</a></li>
             </ol>
         </div>
         <!-- /.col-lg-12 -->
@@ -28,39 +34,53 @@
 <div class="row">
     <div class="col-md-12">
         <div class="white-box">
-            <h3 class="box-title m-b-0">{{$type}} Setting</h3>
+            <h3 class="box-title m-b-0">الاعدادات الرئيسية</h3>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    {!!Form::open( ['url' => '/dashboard/setting/' , 'method' => 'Post']) !!}
+                    {!!Form::open( ['url' => '/dashboard/setting/' , 'method' => 'Post','files'=>true]) !!}
                     @foreach($settings as $setting)
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <div class="col-md-12">
-                                @if($setting->field == 0)
-                                    <label for="exampleInputEmail1">{{$setting->name}}</label>
+                                @if($setting->type == 0)
+                                    <label for="exampleInputEmail1">{{$setting->title}}</label>
                                     {!! Form::text($setting->name,$setting->value,['class'=>'form-control'])!!}
                                 @if($setting->name=="MetaTags")
                                     <br>
                                     <div class="alert alert-success">
-                                        <strong>Attention :</strong> Meta tags words That you Pepole Can find this website through Search Engines.
+                                        <strong>تنبيه :</strong> الكلمات الدلالية هي الكلمات التي يمكن من خلالها رؤية الموقع على محركات البحث مثل جوجل
                                     </div>
                                         @elseif($setting->name=="SiteDesciprtion")
                                         <br>
                                         <div class="alert alert-info">
-                                            <strong>Attention :</strong> Site Desciprtion shouldn't be more than 170 words due to Google.
+                                            <strong>تنبيه :</strong> أجعل وصف الموقع 170 كلمة على الأكثر طبقاً لمعايير جوجل للأرشفة
                                         </div>
                                         @endif
-
-                                @else
-                                    <label for="exampleInputEmail1">{{$setting->name}}</label>
-                                    {!! Form::textarea($setting->name,$setting->value,['class'=>'textarea_editor form-control'])!!}
+                                    @elseif($setting->type == 1)
+                                    <label for="exampleInputEmail1">{{$setting->title}}</label>
+                                    {!! Form::textarea($setting->name,$setting->value,['class'=>'form-control'])!!}
+                                @elseif($setting->type == 2)
+                                    <label for="exampleInputEmail1">{{$setting->title}}</label>
+                                        <input type="file" id="input-file-now-custom-3" name="img" class="dropify" data-height="400"
+                                               @if(isset($setting))
+                                               @if($setting->value!=null)
+                                               data-default-file="{{getimg($setting->value)}}"
+                                               @else
+                                               data-default-file="/upload/infograph.jpg"
+                                               @endif
+                                               @else
+                                               data-default-file="/upload/infograph.jpg"
+                                                @endif
+                                        />
                                 @endif
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <br>
                     @endforeach
-                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                    <button type="reset" class="btn btn-inverse waves-effect waves-light">Reset</button>
+                    <div class="text-center">
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">حفظ</button>
+                    <button type="reset" class="btn btn-inverse waves-effect waves-light">مسح</button>
+                    </div>
                     {!!Form::close() !!}
                 </div>
             </div>
@@ -86,6 +106,129 @@
     <!--Style Switcher -->
     <script src="/admin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 
+    <script src="/admin/plugins/bower_components/custom-select/custom-select.min.js" type="text/javascript"></script>
+    <script src="/admin/plugins/bower_components/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <script src="/admin/plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="/admin/plugins/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/admin/plugins/bower_components/multiselect/js/jquery.multi-select.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            // Switchery
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+            $('.js-switch').each(function () {
+                new Switchery($(this)[0], $(this).data());
+            });
+            // For select 2
+            $(".select2").select2();
+            $('.selectpicker').selectpicker();
+            //Bootstrap-TouchSpin
+            $(".vertical-spin").TouchSpin({
+                verticalbuttons: true
+                , verticalupclass: 'ti-plus'
+                , verticaldownclass: 'ti-minus'
+            });
+            var vspinTrue = $(".vertical-spin").TouchSpin({
+                verticalbuttons: true
+            });
+            if (vspinTrue) {
+                $('.vertical-spin').prev('.bootstrap-touchspin-prefix').remove();
+            }
+            $("input[name='tch1']").TouchSpin({
+                min: 0
+                , max: 100
+                , step: 0.1
+                , decimals: 2
+                , boostat: 5
+                , maxboostedstep: 10
+                , postfix: '%'
+            });
+            $("input[name='tch2']").TouchSpin({
+                min: -1000000000
+                , max: 1000000000
+                , stepinterval: 50
+                , maxboostedstep: 10000000
+                , prefix: '$'
+            });
+            $("input[name='tch3']").TouchSpin();
+            $("input[name='tch3_22']").TouchSpin({
+                initval: 40
+            });
+            $("input[name='tch5']").TouchSpin({
+                prefix: "pre"
+                , postfix: "post"
+            });
+            // For multiselect
+            $('#pre-selected-options').multiSelect();
+            $('#optgroup').multiSelect({
+                selectableOptgroup: true
+            });
+            $('#public-methods').multiSelect();
+            $('#select-all').click(function () {
+                $('#public-methods').multiSelect('select_all');
+                return false;
+            });
+            $('#deselect-all').click(function () {
+                $('#public-methods').multiSelect('deselect_all');
+                return false;
+            });
+            $('#refresh').on('click', function () {
+                $('#public-methods').multiSelect('refresh');
+                return false;
+            });
+            $('#add-option').on('click', function () {
+                $('#public-methods').multiSelect('addOption', {
+                    value: 42
+                    , text: 'test 42'
+                    , index: 0
+                });
+                return false;
+            });
+        });
+    </script>
 
+
+    <script src="/admin/plugins/bower_components/dropify/dist/js/dropify.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Basic
+            $('.dropify').dropify();
+
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-déposez un fichier ici ou cliquez',
+                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                    remove: 'Supprimer',
+                    error: 'Désolé, le fichier trop volumineux'
+                }
+            });
+
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+
+            drEvent.on('dropify.beforeClear', function(event, element) {
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+
+            drEvent.on('dropify.afterClear', function(event, element) {
+                alert('File deleted');
+            });
+
+            drEvent.on('dropify.errors', function(event, element) {
+                console.log('Has Errors');
+            });
+
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function(e) {
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+    </script>
 
 @endsection

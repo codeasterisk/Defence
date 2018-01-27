@@ -23,7 +23,7 @@
                                     <div class="post-list-small__img-holder">
                                         <div class="thumb-container thumb-75">
                                             <a href="{{ route('news-post', ['category' => $trending->category->slug, 'news' => $trending->slug ]) }}">
-                                                <img data-src="/photos/{{ $trending->img }}" src="/website/img/empty.png" alt="" class=" lazyload">
+                                                <img data-src="{{getimg($trending->img) }}" src="/website/img/empty.png" alt="" class=" lazyload">
                                             </a>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                     <div class="entry__img-holder mb-0">
                         <a href="{{ route('info-graph', ['slug' => $infograph->slug]) }}">
                             <div class="thumb-bg-holder">
-                                <img data-src="/photos/{{ $infograph->img }}" style="height: 320px" src="/photos/{{ $infograph->img }}" class="entry__img owl-lazy" alt="">
+                                <img data-src="{{getimg($infograph->img) }}" style="height: 320px" src="{{ getimg($infograph->img) }}" class="entry__img owl-lazy" alt="">
                                 <div class="bottom-gradient"></div>
                             </div>
                         </a>

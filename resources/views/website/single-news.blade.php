@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="entry__img-holder">
-                        <img data-src="/photos/{{$post->img}}" src="/website/img/blog/single_post_featured_img.jpg" alt="" class="entry__img lazyload">
+                        <img data-src="{{getimg($post->img)}}" src="/website/img/blog/single_post_featured_img.jpg" alt="" class="entry__img lazyload">
                     </div>
 
                     <!-- Share -->
@@ -107,7 +107,7 @@
                                     <div class="entry__img-holder">
                                         <a href="{{ route('news-post', ['category' => $post->category->slug, 'news' => $post->slug]) }}">
                                             <div class="thumb-container thumb-75">
-                                                <img data-src="/photos/{{ $post->img }}" src="/website/img/empty.png" class="entry__img lazyload" alt="">
+                                                <img data-src="{{getimg($post->img) }}" src="/website/img/empty.png" class="entry__img lazyload" alt="">
                                             </div>
                                         </a>
                                     </div>

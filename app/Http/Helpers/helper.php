@@ -58,7 +58,7 @@ function cat_type()
  */
 function uploadpath()
 {
-    return '/public/upload/';
+    return '/public/photos/';
 }
 
 /**
@@ -80,7 +80,7 @@ function uploader($request,$img_name)
  */
 function getimg($filename)
 {
-    return '/upload/'.$filename;
+    return '/photos/'.$filename;
 }
 
 /**

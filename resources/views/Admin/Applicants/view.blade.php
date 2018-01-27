@@ -46,12 +46,13 @@
                                     <span class="media-meta pull-right">{{ date("d M Y", strtotime($applicant->created_at))}}</span>
                                     <h4 class="text-danger m-0">{{$applicant->name}}</h4> <small class="text-muted"> من : {{$applicant->email}}</small>
                                     <br>
-                                    <small class="text-muted">تليفون : {{$applicant->phone}}</small>
+                                    <small class="text-muted">المسمى الوظيفي : {{$applicant->job_title}}</small>
                                 </div>
                             </div>
                             <Br>
                             <p>{{$applicant->about}}</p>
                             <hr>
+                            <p>يمكنك تحميل او عرض السيرة الذاتية من <a href="/cvs/{{$applicant->cv}}">هنا</a></p>
                         </div>
                     </div>
                 </div>
