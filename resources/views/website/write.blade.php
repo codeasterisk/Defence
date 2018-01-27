@@ -7,7 +7,10 @@
 @section('header')
 
 @endsection
-
+@section('meta')
+    <meta name="keywords" content="شارك, اكتب, صحفي, صحافة, شبكة, اخبار, الدفاع">
+    <meta name="description" content='كن انت الصحفي واكتب مقالك على شبكة اخبار الدفاع'>
+@endsection
 @section('content')
     <!-- Page Title -->
     <section class="page-title" style="background-image: url(/website/img/blog/contact.jpg);">

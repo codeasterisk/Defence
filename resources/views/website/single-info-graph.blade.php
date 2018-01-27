@@ -3,7 +3,9 @@
 @section('title')
     {{$post->category->title}} | {{ $post->title }}
 @endsection
-
+@section('meta')
+    <meta name="keywords" content="@foreach(explode(' ', $post->title) as $key){!!   "$key, " !!}@endforeach">
+@endsection
 @section('header')
     <div id="fb-root"></div>
     <script>(function(d, s, id) {

@@ -3,7 +3,10 @@
 @section('title')
     {{$post->category->title}} | {{ $post->title }}
 @endsection
-
+@section('meta')
+    <meta name="keywords" content="@foreach(array_merge(explode(' ', $post->title), explode(' ', $post->description)) as $key){!!   "$key, " !!}@endforeach">
+    <meta name="description" content="{{ $post->description }}">
+@endsection
 @section('header')
     <div id="fb-root"></div>
     <script>(function(d, s, id) {

@@ -7,7 +7,11 @@
 @section('header')
 
 @endsection
-
+@section('meta')
+    <meta name="keywords" content="مجلة, بحث, اخبار, اخبار مصر, مصر, عاجل, جديد, حصري, الجيش, وزارة, الدفاع, شبكة, شبكة اخبار, الرئيسية">
+    <meta name="description" content="شبكة أخبار الدفاع هي جريدة اخبارية متجددة تهتم بكل ما هو حصري وجديد عن الاحداث اليومية في مصر والوطن العربي">
+    <meta name="author" content="شركة كود أستيريسك لتطوير البرمجيات, مصر - codeasterisk.com">
+@endsection
 @section('content')
     <!-- Featured Posts Grid -->
     <section class="featured-posts-grid bg-dark">

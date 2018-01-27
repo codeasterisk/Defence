@@ -7,7 +7,10 @@
 @section('header')
 
 @endsection
-
+@section('meta')
+    <meta name="keywords" content="search, بحث, قسم, {{ $category }}">
+    <meta name="description" content="قسم {{ $category }}">
+@endsection
 @section('content')
     <br>
     <br>
