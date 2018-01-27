@@ -1,12 +1,14 @@
 
 <li><a href="/dashboard" class="waves-effect"><i class="fa fa-home
-                              "></i> <span class="hide-menu">الرئيسية </span></a> </li>
+"></i> <span class="hide-menu">الرئيسية </span></a> </li>
 
 
 <li> <a href="/dashboard/setting/" class="waves-effect"><i class="fa fa-cog"></i>
         <span class="hide-menu">الإعدادات</span>
     </a>
 </li>
+
+<li><a href="/dashboard/logs" class="waves-effect"><i class="fa fa-info-circle"></i> <span class="hide-menu"> </span>سجلات النشاطات </a> </li>
 
 <li> <a href="javascript:void(0)" class="waves-effect"><i class="fa fa-users"></i>
         <span class="hide-menu">الأعضاء<span class="fa arrow"></span></span></a>

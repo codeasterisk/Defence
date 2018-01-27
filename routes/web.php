@@ -62,6 +62,7 @@ Route::group(['middleware' => 'optimizeImages'], function () {
         Route::get('setting', 'Admin\SettingController@index');
         Route::post('setting', 'Admin\SettingController@store');
 
+        Route::get('logs', 'Admin\LogController@index');
 
     });
 

@@ -1,10 +1,9 @@
 @extends('Admin.layout')
 @section('title')
-  كل الأعضاء
+    سجلات نشاطات الأعضاء
 @endsection
 
 @section('header')
-
   <link href="/admin/plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
 @endsection
@@ -12,12 +11,12 @@
   <div class="container-fluid">
     <div class="row bg-title">
       <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">الأعضاء</h4> </div>
+        <h4 class="page-title">نشاطات الاعضاء</h4> </div>
       <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
         <ol class="breadcrumb">
           <li><a href="/">لوحة التحكم</a></li>
-          <li><a href="/dashboard/users">الأعضاء</a></li>
-          <li class="active">كل الأعضاء</li>
+          <li><a href="/dashboard/logs">النشاطات</a></li>
+          <li class="active">كل نشاطات الأعضاء</li>
         </ol>
       </div>
       <!-- /.col-lg-12 -->
@@ -27,53 +26,35 @@
 
       <div class="col-sm-12">
         <div class="white-box">
-          <h3 class="box-title m-b-0">الأعضاء</h3>
-          <p class="text-muted m-b-30">التحكم بالأعضاء</p>
+          <h3 class="box-title m-b-0">النشاطات</h3>
+          <p class="text-muted m-b-30">عرض كل النشاطات</p>
           <div class="table-responsive">
             <table id="example23" class="display nowrap" cellspacing="0" width="100%">
               <thead>
               <tr>
-                <th> # </th>
-                <th> الإسم </th>
-                <th> الايميل </th>
-                <th> العضوية </th>
-                  <th> الحالة </th>
-                  <th> العمليات </th>
+                <th>#</th>
+                <th>النشاط</th>
+                  <th>العضو</th>
+                  <th>التاريخ</th>
               </tr>
               </thead>
               <tfoot>
               <tr>
                   <th>#</th>
-                  <th>الإسم</th>
-                  <th>الايميل</th>
-                  <th>العضوية</th>
-                  <th>الحالة</th>
-                  <th>العمليات</th>
+                  <th>النشاط</th>
+                  <th>العضو</th>
+                  <th>التاريخ</th>
               </tr>
               </tfoot>
               <tbody>
-              @foreach($users as $user)
+              @foreach($logs as $log)
               <tr>
-                <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>@if($user->role==1)
-                <span class="label label-info">مدير الموقع</span>
-                    @elseif($user->role==2)
-                    <span class="label label-danger">محرر الموقع</span>
-                  @endif
-                </td>
-                  <td>@if($user->status==1)
-                          <span class="label label-success">مفعلة</span>
-                      @elseif($user->status==0)
-                          <span class="label label-danger">محظورة</span>
-                      @endif
+                <td>{{$log->id}}</td>
+                <td>{{$log->description}}</td>
+                  <td>
+                  <span class="label label-info">{{$log->causer->name}}</span>
                   </td>
-                <td class="text-nowrap">
-                  <a href="/dashboard/users/{{$user->id}}/edit" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                  <a href="/dashboard/users/destroy/{{$user->id}}" id="delete-btn"  data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-trash -o text-danger"></i></a>
-                    <a href="/dashboard/users/{{$user->id}}" data-toggle="tooltip" data-original-title="view"> <i class="fa fa-search text-info m-r-10"></i></a>
-                </td>
+                  <td> {{date("d M Y", strtotime($log->created_at)) }}</td>
               </tr>
                 @endforeach
               </tbody>
@@ -145,6 +126,8 @@
           ]
       });
   </script>
+  <!--Style Switcher -->
+  <script src="/admin/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 
   <script>
       var deleter = {
@@ -162,8 +145,8 @@
               var link = $(this);
 
               swal({
-                  title: "هل أنت متأكد ",
-                  text: "هل تريد حذف هذا العضو ؟",
+                  title: "هل أنت متأكد ؟",
+                  text: "هل تريد حذف هذا الانفوجراف ؟",
                   icon: "warning",
                   buttons: true,
                   dangerMode: true,
@@ -172,7 +155,7 @@
                       window.location = link.attr('href');
                   }
                   else{
-                      swal("تم االإلفاء", "حذف العضو تم الغاؤه", "عذراً");
+                      swal("تم الإلغاء", "حذف الانفوجراف تم الغاؤه", "جيد");
                   }
               });
 

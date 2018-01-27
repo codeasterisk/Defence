@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <title>
-        شبكة الدفاع
+       {{getsetting('SiteName')}}
     |
         @yield('title')
     </title>
@@ -67,20 +67,14 @@
     </nav>
 
     <div class="socials sidenav__socials">
-        <a class="social social-facebook" href="#" target="_blank" aria-label="facebook">
+        <a class="social social-facebook" href="{{getsetting('facebook')}}" target="_blank" aria-label="facebook">
             <i class="ui-facebook"></i>
         </a>
-        <a class="social social-twitter" href="#" target="_blank" aria-label="twitter">
+        <a class="social social-twitter" href="{{getsetting('twitter')}}"  target="_blank" aria-label="twitter">
             <i class="ui-twitter"></i>
         </a>
-        <a class="social social-google-plus" href="#" target="_blank" aria-label="google">
-            <i class="ui-google"></i>
-        </a>
-        <a class="social social-youtube" href="#" target="_blank" aria-label="youtube">
+        <a class="social social-youtube"  href="{{getsetting('youtube')}}" target="_blank" aria-label="youtube">
             <i class="ui-youtube"></i>
-        </a>
-        <a class="social social-instagram" href="#" target="_blank" aria-label="instagram">
-            <i class="ui-instagram"></i>
         </a>
     </div>
 </header> <!-- end sidenav -->
@@ -152,21 +146,17 @@
                         <div class="nav__right-item socials nav__socials d-none d-lg-flex">
                             <li><a href="{{ route('write') }}" style="color:white; padding: 5px; border-radius: 5px" class=" btn-color"><span>شاركنا بمقالك</span></a></li>
 
-                            <a class="social social-facebook social--nobase" href="#" target="_blank" aria-label="facebook">
+                            <a class="social social-facebook social--nobase" href="{{getsetting('facebook')}}"  target="_blank" aria-label="facebook">
                                 <i class="ui-facebook"></i>
                             </a>
-                            <a class="social social-twitter social--nobase" href="#" target="_blank" aria-label="twitter">
+                            <a class="social social-twitter social--nobase" href="{{getsetting('twitter')}}"  target="_blank" aria-label="twitter">
                                 <i class="ui-twitter"></i>
                             </a>
-                            <a class="social social-google social--nobase" href="#" target="_blank" aria-label="google">
-                                <i class="ui-google"></i>
-                            </a>
-                            <a class="social social-youtube social--nobase" href="#" target="_blank" aria-label="youtube">
+
+                            <a class="social social-youtube social--nobase" href="{{getsetting('youtube')}}"  target="_blank" aria-label="youtube">
                                 <i class="ui-youtube"></i>
                             </a>
-                            <a class="social social-instagram social--nobase" href="#" target="_blank" aria-label="instagram">
-                                <i class="ui-instagram"></i>
-                            </a>
+
                         </div>
 
                         <!-- Search -->
@@ -327,7 +317,7 @@
 <script src="/website/js/jquery.newsTicker.min.js"></script>
 <script src="/website/js/modernizr.min.js"></script>
 <script src="/website/js/scripts.js"></script>
-<script src="{{asset('js/app.js')}}"></script>
+{{--<script src="{{asset('js/app.js')}}"></script>--}}
 <script>function search() { window.location.href = "{{ route('search', ['word' => '']) }}/" + $('#search').val(); }</script>
 
 @yield('footer')

@@ -1,8 +1,20 @@
 <?php
 /**
+ * Setting Name
+ * @param $name
+ * @return mixed
+ */
+function getsetting($name)
+{
+    $setting=\App\Setting::where('name',$name)->first();
+    return $setting->value;
+}
+
+/**
  * Users Accounts roles
  * @return array
  */
+
 function roles()
 {
   $array=[
