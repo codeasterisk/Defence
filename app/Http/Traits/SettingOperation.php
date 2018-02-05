@@ -27,7 +27,10 @@ trait SettingOperation
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request){
-        $data = $request->toArray();
+        $data = $request->all();
+        
+        if($request->file('logo')) $data['logo'] = uploader($request, 'logo'); else unset($data['logo']);
+        
         foreach ($data as $key => $value) {
             if($key == '_token' || !$value) continue;
             Setting::where(['key' => $key])->update(['value' => $value]);

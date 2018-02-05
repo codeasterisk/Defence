@@ -14,7 +14,7 @@ class NewsController
     public function view($category, $news) {
 
         $post = News::where(['slug' => $news])->first();
-
+        News::where(['slug' => $news])->increment('clicks');
         if(!$post) return redirect('/');
 
         return view('website.single-news', compact('post'))

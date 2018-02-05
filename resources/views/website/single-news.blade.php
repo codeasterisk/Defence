@@ -57,8 +57,7 @@
                             </li>
                             <li class="entry__meta-date">
                                 <i class="ui-date"></i>
-                                {{ !$post->created_at->setLocale('ar') }}
-                                {{ $post->created_at->diffforhumans() }}
+                                {!!  $post->created_at  !!}
                             </li>
                         </ul>
                     </div>

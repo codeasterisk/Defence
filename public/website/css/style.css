@@ -57,7 +57,7 @@ body
   background-color: #f2f4f5; }
 
 .bg-dark {
-  background-color: #1b1c1f; }
+  background-color: #353638; }
 
 .last {
   margin-bottom: 0 !important; }
@@ -510,7 +510,7 @@ hr {
 .btn-color:hover {
   opacity: .92; }
 .btn-dark {
-  background-color: #1b1c1f; }
+  background-color: #353638; }
 .btn-white {
   background-color: #fff;
   color: #404648; }
@@ -2729,7 +2729,7 @@ figcaption {
   transition: height 0.3s ease-in-out;
   /* Dropdowns (large screen) */ }
 .nav__holder {
-  background-color: #1b1c1f; }
+  background-color: #353638; }
 @media only screen and (min-width: 992px) {
   .nav {
     height: 50px; }
@@ -2799,7 +2799,7 @@ figcaption {
     text-align: RIGHT;
     list-style: none;
     white-space: nowrap;
-    background-color: #1b1c1f;
+    background-color: #353638;
     -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     -webkit-background-clip: padding-box;
@@ -2999,11 +2999,11 @@ input.nav__search-mobile-input:-ms-input-placeholder {
 /* Nav Mobile Sidenav
 /*-------------------------------------------------------*/
 .sidenav {
-  background-color: #1b1c1f;
+  background-color: #353638;
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 0;
+  right: 0;
   width: 320px;
   font-weight: 600;
   z-index: 121;
@@ -3016,11 +3016,12 @@ input.nav__search-mobile-input:-ms-input-placeholder {
   transition: -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
   transition: transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
   transition: transform 0.5s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
-  -webkit-transform: translateX(-320px);
-  -moz-transform: translateX(-320px);
-  -ms-transform: translateX(-320px);
-  -o-transform: translateX(-320px);
-  transform: translateX(-320px); }
+  -webkit-transform: translateX(320px);
+  -moz-transform: translateX(320px);
+  -ms-transform: translateX(320px);
+  -o-transform: translateX(320px);
+  transform: translateX(320px);
+}
 .sidenav--is-open {
   -webkit-transform: translateX(0);
   -moz-transform: translateX(0);
@@ -3141,7 +3142,7 @@ input.nav__search-mobile-input:-ms-input-placeholder {
   outline: none; }
 
 .sidenav__menu--is-open > a {
-  background-color: #1b1c1f;
+  background-color: #353638;
   color: #fff; }
 .sidenav__menu--is-open > a:hover {
   color: #fff; }
@@ -3300,7 +3301,7 @@ input.nav__search-mobile-input:-ms-input-placeholder {
 /* Footer
 /*-------------------------------------------------------*/
 .footer--dark {
-  background-color: #1b1c1f; }
+  background-color: #353638; }
 .footer--dark .widget-title {
   color: #fff; }
 .footer--dark p, .footer--dark a {

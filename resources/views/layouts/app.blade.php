@@ -29,7 +29,17 @@
 
     <!-- Lazyload -->
     <script src="/website/js/lazysizes.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">
+
     @yield('header')
+    <style>
+        *, body {
+            font-family: 'Amiri', serif !important;
+        }
+        .newsticker-button:focus {
+
+        }
+    </style>
 </head>
 
 <body class="bg-light" id="app">
@@ -45,7 +55,7 @@
 <div class="content-overlay"></div>
 
 <!-- Sidenav -->
-<header class="sidenav" id="sidenav">
+<header class="sidenav" id="sidenav" >
 
     <!-- close -->
     <div class="sidenav__close">
@@ -89,9 +99,16 @@
                 <div class="flex-parent">
 
                     <!-- Mobile logo -->
-                    <a href="index.html" class="logo logo--mobile d-lg-none">
-                        <img class="logo__img" src="/website/img/logo1.png" style="width: 30px;" srcset="/website/img/logo1.png 1x, /website/img/logo1.png 2x" alt="logo">
+                    <a href="{{ url('/') }}" class="logo logo--mobile d-lg-none">
+                        <img class="logo__img" src="{{ getimg(getsetting('logo')) }}" style="width: 30px;" srcset="{{ getimg(getsetting('logo')) }} 1x, {{ getimg(getsetting('logo')) }}" alt="logo">
                     </a>
+
+                    <!-- Side Menu Button -->
+                    <button class="nav-icon-toggle" id="nav-icon-toggle" aria-label="Open side menu" style="margin-left: 0;margin-left: 28px;">
+                      <span class="nav-icon-toggle__box">
+                        <span class="nav-icon-toggle__inner"></span>
+                      </span>
+                    </button> <!-- end Side menu button -->
 
                     <!-- Nav-wrap -->
                     <nav class="flex-child nav__wrap d-none d-lg-block">
@@ -129,7 +146,9 @@
                             </li>
 
                             </li>
-
+                            <li><a href="{{ route('category', ['category' => 'رؤى-و-آراء'])}}"><span>رؤى وآراء</span></a></li>
+                            <li><a href="{{ route('category', ['category' => 'أفلام-حربية-1517840744'])}}"><span>أفلام حربية</span></a></li>
+                            <li><a href="{{ route('about-us') }}"><span>من نحن</span></a></li>
                             <li><a href="{{ route('join-us') }}"><span>انضم الينا</span></a></li>
                             <li><a href="{{ route('contact-us') }}"><span>اتصل بنا</span></a> </li>
 
@@ -153,7 +172,7 @@
                                 <i class="ui-twitter"></i>
                             </a>
 
-                            <a class="social social-youtube social--nobase" href="{{getsetting('youtube')}}"  target="_blank" aria-label="youtube">
+                            <a class="social social-youtube social--nobase" style="margin-left: 15px; margin-right: 15px;" href="{{getsetting('youtube')}}"  target="_blank" aria-label="youtube">
                                 <i class="ui-youtube"></i>
                             </a>
 
@@ -176,12 +195,7 @@
                         </div>
                     </div> <!-- end nav right -->
 
-                    <!-- Side Menu Button -->
-                    <button class="nav-icon-toggle" id="nav-icon-toggle" aria-label="Open side menu">
-              <span class="nav-icon-toggle__box">
-                <span class="nav-icon-toggle__inner"></span>
-              </span>
-                    </button> <!-- end Side menu button -->
+
 
                 </div> <!-- end flex-parent -->
             </div> <!-- end container -->
@@ -190,12 +204,15 @@
     </header> <!-- end navigation -->
 
     <!-- Header -->
-    <div class="header">
+    <div class="header text-center" style="padding:0">
+        <div class="container-fluid" style="background-color: #FFD34F; width: 100%;color: black; padding: 5px 0;border-bottom: dashed 1px white;" >
+            <a>الموقع لا يزال في نسخته التجريبية</a>
+        </div>
         <div class="container">
             <div class="flex-parent align-items-center">
                 <!-- Logo -->
-                <a href="index.html" class="logo d-none d-lg-block" style="width: 160px">
-                   <img class="logo__img" src="/website/img/logo1.png" srcset="/website/img/logo1.png 1x, /website/img/logo1.png 2x" alt="logo">
+                <a href="{{ url('/') }}" class="logo d-none d-lg-block" style="width: 160px">
+                   <img class="logo__img" src="{{ getimg(getsetting('logo')) }}" srcset="{{ getimg(getsetting('logo')) }} 1x, {{ getimg(getsetting('logo')) }} 2x" alt="logo">
                 </a>
 
 
@@ -208,23 +225,24 @@
             </div>
         </div>
     </div> <!-- end header -->
-
-    @if($news = \App\Category::where(['title' => 'الأخبار العاجلة'])->first()->news)
+	@if(\App\Category::where(['title' => 'الأخبار العاجلة'])->where('created_at', '<=', 'DATE_SUB(NOW(), INTERVAL 1 DAY)')->first())
+    @if($news = \App\Category::where(['title' => 'الأخبار العاجلة'])->where('created_at', '<=', 'DATE_SUB(NOW(), INTERVAL 1 DAY)')->first()->news)
     <!-- Trending Now -->
     <div class="trending-now">
         <div class="container relative">
             <span class="trending-now__label">الأخبار العاجلة</span>
             <ul class="newsticker">
                 @foreach($news as $new)
-                <li class="newsticker__item"><a href="{{ route('news-post', ['category' => $new->category->slug, 'slug' => $new->slug]) }}" class="newsticker__item-url">{{ $new->title }} </a></li>
+                <li class="newsticker__item" style="padding-right:15px; background-color: {{ $new->prefix == 'مؤكد' ? '#990000' : 'yellow' }}"><a href="{{ route('news-post', ['category' => $new->category->slug, 'slug' => $new->slug]) }}" class="newsticker__item-url" style="{{ $new->prefix == 'مؤكد' ? 'color: white !important;' : '' }}">{{ $new->prefix }}: {{ $new->title }} </a></li>
                 @endforeach
             </ul>
             <div class="newsticker-buttons">
-                <button class="newsticker-button newsticker-button--prev" id="newsticker-button--prev" aria-label="next article"><i class="ui-arrow-right"></i></button>
-                <button class="newsticker-button newsticker-button--next" id="newsticker-button--next" aria-label="previous article"><i class="ui-arrow-left"></i></button>
+                <button class="newsticker-button newsticker-button--prev" id="newsticker-button--prev" style="border: none" aria-label="next article"><i class="ui-arrow-right"></i></button>
+                <button class="newsticker-button newsticker-button--next" id="newsticker-button--next" style="border: none" aria-label="previous article"><i class="ui-arrow-left"></i></button>
             </div>
         </div>
     </div>
+    @endif
     @endif
   @yield('content')
 
@@ -237,11 +255,11 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="widget">
                             <a href="{{ url('/') }}">
-                             <img src="/website/img/logo1.png" srcset="/website/img/logo1.png 1x, /website/img/logo1.png 2x" class="logo__img" style="height: 120px" alt="">
+                             <img src="{{ getimg(getsetting('logo')) }}" srcset="{{ getimg(getsetting('logo')) }} 1x, {{ getimg(getsetting('logo')) }} 2x" class="logo__img" style="height: 120px" alt="">
 
                             </a>
                             <p class="mt-20">
-                                هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.
+                                {{ getsetting('footer_word') }}
                             </p>
                         </div>
                     </div>

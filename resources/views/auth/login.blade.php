@@ -32,8 +32,8 @@
         <div class="white-box">
             <form class="form-horizontal form-material" id="loginform" method="POST" action="{{ route('login') }}">
                 {{ csrf_field() }}
-                <a href="javascript:void(0)" class="text-center db"><img src="/admin/plugins/images/eliteadmin-logo-dark.png" alt="Home" />
-                    <br/><img src="/admin/plugins/images/eliteadmin-text-dark.png" alt="Home" /></a>
+                <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('website/img/logo1.png') }}" width="90" alt="Home" />
+                    <br/></a>
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} m-t-40">
                     <div class="col-xs-12">
@@ -73,7 +73,7 @@
                 <row>
                     <br>
                     <br>
-                    <p align="center">جميع الحقوق محفوظة لدى شبكة الدفاع | تصميم وتطوير شركة كود أثريك</p>
+                    <p align="center">جميع الحقوق محفوظة لدى شبكة الدفاع | تصميم وتطوير شركة كود أستيريسك</p>
                 </row>
             </form>
         </div>

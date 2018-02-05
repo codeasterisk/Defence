@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-xs-12">
 
-                            {!!Form::model($new , ['url' => ['/dashboard/news/' , $new->id] , 'method' => 'PATCH','files'=>'true']) !!}
+                            {!!Form::model($new , ['url' => ['/dashboard/news' , $new->id] , 'method' => 'PATCH','files'=>'true']) !!}
                             @include('Admin.News.form')
                             {!!Form::close() !!}
                         </div>

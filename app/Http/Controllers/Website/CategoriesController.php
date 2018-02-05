@@ -17,7 +17,7 @@ class CategoriesController
 
         if(! $cat) return redirect('/');
 
-        $items = ($cat->type == 'video') ? Video::where(['cat_id' => $cat->id])->paginate(12) : (($cat->type == 'news') ? News::where(['cat_id' => $cat->id])->paginate(1) : Gallery::where(['cat_id' => $cat->id])->paginate(12));
+        $items = ($cat->type == 'video') ? Video::where(['cat_id' => $cat->id])->paginate(12) : (($cat->type == 'news') ? News::where(['cat_id' => $cat->id])->paginate(1) : (($cat->type == 'reviews') ? News::where(['cat_id' => $cat->id])->paginate(12) : Gallery::where(['cat_id' => $cat->id])->paginate(12)));
 
         return view('website.category', compact('items'))->with('category', $cat->title)
             ->with('trendings', News::orderBy('clicks', 'desc')->get())

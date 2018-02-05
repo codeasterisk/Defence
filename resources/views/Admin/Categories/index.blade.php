@@ -57,20 +57,20 @@
                 <td>{{$cat->title}}</td>
                   <td>@if($cat->type=="news")
                           <span class="label label-info">قسم اخباري</span>
-                          @elseif($cat->type=="video")
+                      @elseif($cat->type=="video")
                           <span class="label label-info">قسم للفيديوهات</span>
                       @elseif($cat->type=="infographic")
                           <span class="label label-info">قسم للانوفجرافيك</span>
-                          @endif
+                      @endif
                   </td>
                   <td>
                       @if($cat->type=="news")
-                      {{count($cat->users)}}
-                          @elseif($cat->type == "video")
-                      {{count(\Spatie\Permission\Models\Permission::where('name','control videos')->get())}}
+                         {{count($cat->users)}}
+                      @elseif($cat->type == "video")
+                         {{count(\Spatie\Permission\Models\Permission::where('name','control videos')->get())}}
                       @elseif($cat->type == "infographic")
-                          {{count(\Spatie\Permission\Models\Permission::where('name','control images')->get())}}
-                          @endif
+                         {{count(\Spatie\Permission\Models\Permission::where('name','control images')->get())}}
+                      @endif
                   </td>
                   <td>
                       @if($cat->type=="news")
@@ -82,8 +82,10 @@
                       @endif
                   </td>
                 <td class="text-nowrap">
-                  <a href="/dashboard/categories/{{$cat->id}}/edit" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                    @if($cat->type != 'reviews' && $cat->title != 'أفلام حربية')
+                    <a href="/dashboard/categories/{{$cat->id}}/edit" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
                     <a href="/dashboard/categories/destroy/{{$cat->id}}" id="delete-btn"  data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-trash -o text-danger"></i></a>
+                    @endif
                 </td>
               </tr>
                 @endforeach
