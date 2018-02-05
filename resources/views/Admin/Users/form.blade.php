@@ -1,4 +1,3 @@
-
 @if (count($errors) > 0)
 <div class="alert alert-danger">
   <ul>
@@ -37,10 +36,10 @@
          @if($user->profile_img!=null)
            data-default-file="{{getimg($user->profile_img)}}"
            @else
-           data-default-file="/upload/user.png"
+           data-default-file="/photos/user.png"
            @endif
             @else
-           data-default-file="/upload/user.png"
+           data-default-file="/photos/user.png"
          @endif
     />
 </div>

@@ -68,7 +68,7 @@
                   <td>{{count($new->clicks)}}</td>
                   <td>@if($new->status==1)
                           <span class="label label-success">موافق علية</span>
-                      @elseif($user->status==0)
+                      @elseif($new->status==0)
                           <span class="label label-danger">تحت الموافقة</span>
                       @endif
                   </td>                  <td> {{date("d M Y", strtotime($new->created_at)) }}</td>

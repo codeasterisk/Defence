@@ -44,32 +44,32 @@
                                 @if($setting->type == 0)
                                     <label for="exampleInputEmail1">{{$setting->title}}</label>
                                     {!! Form::text($setting->name,$setting->value,['class'=>'form-control'])!!}
-                                @if($setting->name=="MetaTags")
+                                  @if($setting->name=="MetaTags")
                                     <br>
                                     <div class="alert alert-success">
                                         <strong>تنبيه :</strong> الكلمات الدلالية هي الكلمات التي يمكن من خلالها رؤية الموقع على محركات البحث مثل جوجل
                                     </div>
-                                        @elseif($setting->name=="SiteDesciprtion")
+                                  @elseif($setting->name=="SiteDesciprtion")
                                         <br>
                                         <div class="alert alert-info">
                                             <strong>تنبيه :</strong> أجعل وصف الموقع 170 كلمة على الأكثر طبقاً لمعايير جوجل للأرشفة
                                         </div>
-                                        @endif
-                                    @elseif($setting->type == 1)
+                                   @endif
+                                 @elseif($setting->type == 1)
                                     <label for="exampleInputEmail1">{{$setting->title}}</label>
                                     {!! Form::textarea($setting->name,$setting->value,['class'=>'form-control'])!!}
-                                @elseif($setting->type == 2)
+                                 @elseif($setting->type == 2)
                                     <label for="exampleInputEmail1">{{$setting->title}}</label>
-                                        <input type="file" id="input-file-now-custom-3" name="img" class="dropify" data-height="400"
+                                        <input type="file" id="input-file-now-custom-3" name="logo" class="dropify" data-height="400"
                                                @if(isset($setting))
-                                               @if($setting->value!=null)
-                                               data-default-file="{{getimg($setting->value)}}"
+	                                               @if($setting->value!=null)
+	                                               data-default-file="{{getimg($setting->value)}}"
+	                                               @else
+	                                               data-default-file="/upload/infograph.jpg"
+	                                               @endif
                                                @else
-                                               data-default-file="/upload/infograph.jpg"
+                                                data-default-file="/upload/infograph.jpg"
                                                @endif
-                                               @else
-                                               data-default-file="/upload/infograph.jpg"
-                                                @endif
                                         />
                                 @endif
                             </div>

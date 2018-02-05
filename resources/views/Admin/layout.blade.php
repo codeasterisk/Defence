@@ -40,7 +40,7 @@
   <!-- Top Navigation -->
   <nav class="navbar navbar-default navbar-static-top m-b-0">
     <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-      <div class="top-left-part"><a class="logo" href="/dashboard"><b><!--This is dark logo icon--><img src="/admin/plugins/images/eliteadmin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="/admin/plugins/images/eliteadmin-logo-dark.png" alt="home" class="light-logo" /></b><span class="hidden-xs">
+      <div class="top-left-part text-center"><a class="logo" href="/dashboard"><b><!--This is dark logo icon--><img src="{{ getimg(getsetting('logo')) }}" width="45" alt="home" class="dark-logo" /></b><span class="hidden-xs">
           </span></a></div>
       <ul class="nav navbar-top-links navbar-left hidden-xs">
         <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
@@ -64,8 +64,8 @@
           <div><img src="{{getimg(Auth::user()->profile_img)}}" alt="user-img" class="img-circle"></div>
           <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span> {{\Illuminate\Support\Facades\Auth::user()->name}} </a>
           <ul class="dropdown-menu animated flipInY">
-            <li><a href="/users/{{Auth::user()->id}}/edit/"><i class="ti-user"></i> My Profile</a></li>
-            <li><a href="/logout"><i class="fa fa-power-off"></i> Logout</a></li>
+            <li><a href="/dashboard/users/{{Auth::user()->id}}/edit"><i class="ti-user"></i>تعديل بيانات الحساب</a></li>
+            <li><a href="/logout"><i class="fa fa-power-off"></i> تسجيل الخروج</a></li>
           </ul>
         </div>
       </div>
@@ -105,6 +105,10 @@
 @yield('footer')
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$('.buttons-copy span').text("نسخ");
+$('.buttons-print span').text("طباعة");
+</script>
 @include('sweet::alert')
 
 </body>

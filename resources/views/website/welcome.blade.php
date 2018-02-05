@@ -69,7 +69,6 @@
                 </div> <!-- end owl slider -->
             </div> <!-- end large post slider -->
 
-
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
                 <article class="entry featured-posts-grid__entry">
                     <div class="thumb-bg-holder" style="background-image: url({{ getimg($latest_news[3]->img) }});">
@@ -95,7 +94,6 @@
                     </div>
                 </article>
             </div>
-
             <div class="featured-posts-grid__item featured-posts-grid__item--sm">
                 <article class="entry featured-posts-grid__entry">
                     <div class="thumb-bg-holder" style="background-image: url('http://img.youtube.com/vi/{{ str_replace('https://www.youtube.com/embed/', '',$latest_news[4]->url) }}/0.jpg');">
@@ -141,7 +139,7 @@
                         <div class="tabs tab-post__tabs">
                             <ul class="tabs__list">
                                 @foreach($pane_news->take(4) as $category)
-                                <li class="tabs__item @if($pane_news[3] == $category) tabs__item--active @endif">
+                                <li class="tabs__item @if($pane_news[count($pane_news) - 1 >= 4 || 3] == $category) tabs__item--active @endif">
                                     <a href="#{{ $category->slug }}" class="tabs__trigger">{{ $category->title }}</a>
                                 </li>
                                 @endforeach
@@ -153,7 +151,7 @@
                     <div class="tabs__content tabs__content-trigger tab-post__tabs-content">
 
                         @foreach($pane_news->take(4) as $category)
-                        <div class="tabs__content-pane @if($pane_news[3] == $category) tabs__content-pane--active @endif" id="{{ $category->slug }}">
+                        <div class="tabs__content-pane @if(isset($pane_news[3])) @if($pane_news[3] == $category) tabs__content-pane--active @endif @endif" id="{{ $category->slug }}">
                             <div class="row">
 
                                 @foreach($category->news->take(2) as $news)

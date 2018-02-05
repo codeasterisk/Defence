@@ -89,8 +89,8 @@
                 <div class="flex-parent">
 
                     <!-- Mobile logo -->
-                    <a href="index.html" class="logo logo--mobile d-lg-none">
-                        <img class="logo__img" src="/website/img/logo1.png" style="width: 30px;" srcset="/website/img/logo1.png 1x, /website/img/logo1.png 2x" alt="logo">
+                    <a href="{{ url('/') }}" class="logo logo--mobile d-lg-none">
+                        <img class="logo__img" src="{{ getimg(getsetting('logo')) }}" style="width: 30px;" srcset="{{ getimg(getsetting('logo')) }} 1x, {{ getimg(getsetting('logo')) }}" alt="logo">
                     </a>
 
                     <!-- Nav-wrap -->
@@ -129,7 +129,12 @@
                             </li>
 
                             </li>
-
+			    @if(count($extra = explode(' - ', getsetting('menu_item1'))) > 1)
+			    <li><a href="{{ $extra[1] }}"><span>{{ $extra[0] }}ا</span></a></li>
+			    @endif
+			    @if(count($extra = explode(' - ', getsetting('menu_item2'))) > 1)
+			    <li><a href="{{ $extra[1] }}"><span>{{ $extra[0] }}ا</span></a></li>
+			    @endif
                             <li><a href="{{ route('join-us') }}"><span>انضم الينا</span></a></li>
                             <li><a href="{{ route('contact-us') }}"><span>اتصل بنا</span></a> </li>
 
@@ -194,8 +199,8 @@
         <div class="container">
             <div class="flex-parent align-items-center">
                 <!-- Logo -->
-                <a href="index.html" class="logo d-none d-lg-block" style="width: 160px">
-                   <img class="logo__img" src="/website/img/logo1.png" srcset="/website/img/logo1.png 1x, /website/img/logo1.png 2x" alt="logo">
+                <a href="{{ url('/') }}" class="logo d-none d-lg-block" style="width: 160px">
+                   <img class="logo__img" src="{{ getimg(getsetting('logo')) }}" srcset="{{ getimg(getsetting('logo')) }} 1x, {{ getimg(getsetting('logo')) }} 2x" alt="logo">
                 </a>
 
 
@@ -208,7 +213,7 @@
             </div>
         </div>
     </div> <!-- end header -->
-
+	@if(\App\Category::where(['title' => 'الأخبار العاجلة'])->first())
     @if($news = \App\Category::where(['title' => 'الأخبار العاجلة'])->first()->news)
     <!-- Trending Now -->
     <div class="trending-now">
@@ -226,6 +231,7 @@
         </div>
     </div>
     @endif
+    @endif
   @yield('content')
 
     <!-- Footer -->
@@ -237,11 +243,11 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="widget">
                             <a href="{{ url('/') }}">
-                             <img src="/website/img/logo1.png" srcset="/website/img/logo1.png 1x, /website/img/logo1.png 2x" class="logo__img" style="height: 120px" alt="">
+                             <img src="{{ getimg(getsetting('logo')) }}" srcset="{{ getimg(getsetting('logo')) }} 1x, {{ getimg(getsetting('logo')) }} 2x" class="logo__img" style="height: 120px" alt="">
 
                             </a>
                             <p class="mt-20">
-                                هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.
+                                {{ getsetting('footer_word') }}
                             </p>
                         </div>
                     </div>
